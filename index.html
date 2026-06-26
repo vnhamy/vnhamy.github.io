@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vo Nguyen Ha My — Key Account & Commercial Manager</title>
+<meta name="description" content="Vo Nguyen Ha My (My) — 8 years building key accounts, channels and categories for leading FMCG companies in Vietnam. Built to last." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0e1116;
+    --ink-soft: #353b45;
+    --muted: #6b7280;
+    --line: #e6e8ec;
+    --bg: #ffffff;
+    --bg-alt: #f6f7f9;
+    --accent: #c8462a;        /* warm terracotta — echoes the Canva brand */
+    --accent-deep: #9c3320;
+    --gold: #b8893b;
+    --radius: 16px;
+    --maxw: 1080px;
+    --shadow: 0 10px 40px rgba(14,17,22,.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: "Sora", sans-serif; line-height: 1.15; margin: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font-family: "Sora", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  section { padding: 92px 0; }
+  section.alt { background: var(--bg-alt); }
+  .section-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; letter-spacing: -.02em; }
+  .lead { font-size: 18px; color: var(--ink-soft); max-width: 760px; }
+
+  /* NАВ */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(160%) blur(12px);
+    background: rgba(255,255,255,.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .brand { font-family: "Sora"; font-weight: 800; letter-spacing: .04em; font-size: 16px; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--accent); }
+  .burger { display: none; background: none; border: 0; font-size: 24px; cursor: pointer; }
+
+  /* HERO */
+  .hero { position: relative; padding: 96px 0 80px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(1100px 460px at 78% -8%, rgba(200,70,42,.10), transparent 60%),
+      radial-gradient(700px 380px at 8% 110%, rgba(184,137,59,.10), transparent 60%);
+    z-index: -1;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,70,42,.10); color: var(--accent-deep);
+    border: 1px solid rgba(200,70,42,.25);
+    padding: 6px 14px; border-radius: 999px; font-weight: 700;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(200,70,42,.18); }
+  .hero-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 48px; align-items: center; margin-top: 26px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 800; letter-spacing: -.03em; }
+  .hero h1 .built { display: block; color: var(--accent); }
+  .hero .name-sub { font-family: "Sora"; font-weight: 600; font-size: 18px; color: var(--muted); margin-top: 6px; }
+  .hero .tag { margin-top: 22px; font-size: 15px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); }
+  .hero .tag span { color: var(--accent); padding: 0 8px; }
+  .hero-actions { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px; border-radius: 999px; font-weight: 600; font-size: 15px;
+    text-decoration: none; transition: .2s; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  /* image slot */
+  .img-slot {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    background: linear-gradient(135deg, #f1ede9, #e9e3dd);
+    border: 1px dashed #cdbfb4; min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; color: #9c8a7c; font-size: 13px; font-weight: 600;
+  }
+  .img-slot img { width: 100%; height: 100%; object-fit: cover; }
+  .hero .img-slot { min-height: 380px; box-shadow: var(--shadow); }
+
+  /* LETTER */
+  .letter { background: var(--ink); color: #f4f1ee; border-radius: 22px; padding: 46px; box-shadow: var(--shadow); }
+  .letter .eyebrow { color: #e8a48f; }
+  .letter h3 { font-size: 26px; margin-bottom: 16px; }
+  .letter p { color: #cfd2d8; margin: 0 0 16px; }
+  .letter .sign { font-family: "Sora"; font-weight: 700; color: #fff; margin-top: 10px; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 14px; }
+  .stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow); }
+  .stat .num { font-family: "Sora"; font-weight: 800; font-size: 38px; color: var(--accent); letter-spacing: -.02em; }
+  .stat .lab { font-size: 14px; color: var(--ink-soft); margin-top: 6px; font-weight: 500; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: .9fr 1.2fr; gap: 46px; align-items: start; }
+  .about p { color: var(--ink-soft); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .pill { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+  .pill.solid { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  /* skill cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px 24px; box-shadow: var(--shadow); transition: .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: #d8c4bb; }
+  .card .ic { width: 44px; height: 44px; border-radius: 12px; background: rgba(200,70,42,.1); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .card h4 { font-size: 18px; margin-bottom: 8px; }
+  .card p { font-size: 14.5px; color: var(--muted); margin: 0; }
+
+  /* info columns */
+  .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .info-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+  .info-card h4 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .info-card .row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14.5px; }
+  .info-card .row:last-child { border-bottom: 0; }
+  .info-card .row span:first-child { color: var(--ink-soft); font-weight: 600; }
+  .info-card .row span:last-child { color: var(--muted); text-align: right; }
+
+  /* TIMELINE */
+  .timeline { position: relative; margin-top: 20px; }
+  .timeline::before { content: ""; position: absolute; left: 18px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .t-item { position: relative; padding: 0 0 30px 56px; }
+  .t-item::before {
+    content: ""; position: absolute; left: 11px; top: 4px;
+    width: 16px; height: 16px; border-radius: 50%; background: #fff;
+    border: 3px solid var(--accent); box-shadow: 0 0 0 4px rgba(200,70,42,.12);
+  }
+  .t-item .when { font-family: "Sora"; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+  .t-item .role { font-family: "Sora"; font-size: 18px; font-weight: 700; margin: 3px 0 2px; }
+  .t-item .co { font-size: 14px; color: var(--muted); font-weight: 600; }
+  .t-item .desc { font-size: 14.5px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+
+  /* highlight list */
+  .hl-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 6px; }
+  .hl-item { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow); }
+  .hl-item .mk { color: var(--accent); font-size: 18px; margin-top: 1px; }
+  .hl-item p { margin: 0; font-size: 15px; color: var(--ink-soft); font-weight: 500; }
+
+  /* CASE STUDY */
+  .case { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 40px; box-shadow: var(--shadow); }
+  .case + .case { margin-top: 28px; }
+  .case .case-head { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
+  .case h3 { font-size: 24px; }
+  .case .who { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .case-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .case h5 { font-family: "Sora"; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .case ul { margin: 0 0 22px; padding-left: 0; list-style: none; }
+  .case ul li { position: relative; padding-left: 22px; margin-bottom: 9px; font-size: 14.5px; color: var(--ink-soft); }
+  .case ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .case ul.checks li::before { content: "✓"; color: var(--gold); }
+  .results { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+  .result { flex: 1; min-width: 120px; text-align: center; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .result .r-num { font-family: "Sora"; font-weight: 800; font-size: 30px; color: var(--accent); }
+  .result .r-lab { font-size: 13px; color: var(--ink-soft); font-weight: 600; margin-top: 2px; }
+  .footnote { font-size: 12px; color: var(--muted); margin-top: 14px; font-style: italic; }
+
+  /* REFERENCES */
+  .ref-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+  .ref { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .ref .rn { font-family: "Sora"; font-weight: 700; font-size: 17px; }
+  .ref .rr { color: var(--accent); font-weight: 600; font-size: 13.5px; margin: 4px 0; }
+  .ref .rc { color: var(--muted); font-size: 14px; }
+  .ref .ravail { margin-top: 12px; font-size: 12.5px; color: var(--muted); font-style: italic; border-top: 1px dashed var(--line); padding-top: 10px; }
+
+  /* CONTACT */
+  .contact { background: var(--ink); color: #fff; border-radius: 22px; padding: 54px 46px; text-align: center; box-shadow: var(--shadow); }
+  .contact .eyebrow { color: #e8a48f; }
+  .contact h2 { font-size: clamp(26px,4vw,40px); font-weight: 800; }
+  .contact p { color: #cfd2d8; max-width: 560px; margin: 12px auto 26px; }
+  .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .contact-links a { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #fff; padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 14.5px; }
+  .contact-links a:hover { background: var(--accent); border-color: var(--accent); }
+
+  footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+  /* reveal animation */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .nav-links.open { display: flex; position: absolute; top: 66px; left: 0; right: 0; flex-direction: column; gap: 16px; background: #fff; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+    .hero-grid, .about-grid, .case-cols { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2,1fr); }
+    .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
+    .letter, .case, .contact { padding: 30px 22px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">VO NGUYEN <span>HA MY</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Expertise</a>
+      <a href="#journey">Journey</a>
+      <a href="#work">Work</a>
+      <a href="#references">References</a>
+      <a class="nav-cta" href="#contact">Let's connect</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span> Open for hire</span>
+    <div class="hero-grid">
+      <div>
+        <h1>BUILT<br>TO <span class="built">LAST</span></h1>
+        <div class="name-sub">Vo Nguyen Ha My · "My"</div>
+        <div class="tag">KEY ACCOUNT MANAGEMENT<span>|</span>CHANNEL DEVELOPMENT<span>|</span>CATEGORY STRATEGY</div>
+        <p class="lead" style="margin-top:22px;">Eight years building key accounts, channels and categories for the biggest FMCG companies in Vietnam — delivering double-digit growth from beverages to personal care to pet care.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/1d-NQMMuWMzvjQn-zaZAtbB3szTGBXdHZ/view?usp=share_link" target="_blank" rel="noopener">View my résumé →</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- IMAGE SLOT: headshot. Replace the inner text with: <img src="images/headshot.jpg" alt="Vo Nguyen Ha My"> -->
+      <div class="img-slot" data-slot="headshot">
+        Your headshot goes here<br>(images/headshot.jpg)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LETTER ============ -->
+<section class="alt" id="welcome">
+  <div class="wrap">
+    <div class="letter reveal">
+      <div class="eyebrow">A note to my visitors</div>
+      <h3>Thank you for opening this — it means more than you know.</h3>
+      <p>Eighteen months ago I stepped away from a career I love to welcome twins. But I didn't stop growing — I changed what I was growing. I learned to lead on no sleep, to prioritize ruthlessly, and to stay calm when everything is on fire. It turns out those are exactly the skills that make a sharper commercial manager, not a rusty one.</p>
+      <p>Now I'm bringing my track record back — with a new edge in data and e-commerce, and a hunger I've never had before. The pages ahead cover every aspect of my work: who I am, my results at a glance, the skills and learning that shaped me, and the stories behind some of my proudest wins across Coca-Cola, Johnson &amp; Johnson, Unilever and Mars.</p>
+      <p>I hope it gives you a clear and honest picture of the value I could bring to your team. Enjoy your visit!</p>
+      <div class="sign">— My</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">About</div>
+    <h2 class="section-title reveal">Warmth to win trust. Numbers to back every decision.</h2>
+    <div class="about-grid" style="margin-top:34px;">
+      <div class="reveal">
+        <!-- IMAGE SLOT: about photo (optional). Replace with <img src="images/about.jpg" alt="My"> -->
+        <div class="img-slot" data-slot="about" style="min-height:360px;">A second photo can go here<br>(images/about.jpg) — optional</div>
+      </div>
+      <div class="about reveal">
+        <p>For 8 years I have built key accounts, channels and categories for some of the biggest FMCG companies in Vietnam, delivering double-digit growth from beverages to personal care to pet care. I led with relationships and numbers — the warmth to win a retailer's trust and the analytics to back every decision.</p>
+        <p>Then life handed me my hardest, best teacher: twins. A year and a half of leading with no playbook taught me more about focus, mental stability and resilience. I've been working relentlessly under pressure and staying flexible under shifting demands.</p>
+        <p>Now I'm back — more driven, focused and committed than ever, with the same proven expertise, now sharpened by a data-driven skillset and an e-commerce edge. I'm not looking for the next stepping stone; I'm looking for a team to commit to, invest in, and grow with for the long term.</p>
+        <p style="font-weight:600;color:var(--ink);">The gap didn't set me back; it propelled me forward. I've only got one direction from here: forward, and better than before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="alt" id="stats">
+  <div class="wrap">
+    <div class="eyebrow reveal">Results at a glance</div>
+    <h2 class="section-title reveal">A track record across four FMCG leaders.</h2>
+    <div class="stats" style="margin-top:30px;">
+      <div class="stat reveal"><div class="num">8 yrs</div><div class="lab">Commercial experience in FMCG</div></div>
+      <div class="stat reveal"><div class="num">4</div><div class="lab">Global companies: Coca-Cola, J&amp;J, Unilever, Mars</div></div>
+      <div class="stat reveal"><div class="num">+275%</div><div class="lab">Peak launch growth (Watsons, NPD)</div></div>
+      <div class="stat reveal"><div class="num">4+</div><div class="lab">Categories: beverage, personal care, home care, pet food</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills &amp; Expertise</div>
+    <h2 class="section-title reveal">Explore what My can bring to a team.</h2>
+    <div class="grid-3 reveal" style="margin-top:34px;">
+      <div class="card"><div class="ic">📈</div><h4>Revenue Growth Strategy</h4><p>Building and structuring channels and categories from the fundamentals up, designing the processes to keep them growing, and identifying opportunities to maximize lifetime value.</p></div>
+      <div class="card"><div class="ic">🚀</div><h4>New Product Initiative</h4><p>Taking new products from first listing to on-shelf — assortment, route-to-market and activation. Mindset: "Build the incremental from fundamentals that shapes the future."</p></div>
+      <div class="card"><div class="ic">🤝</div><h4>Relationship Management</h4><p>Building and nurturing partnerships with internal and external stakeholders, from key account partners to executive-level clients, that drive long-term loyalty and growth.</p></div>
+      <div class="card"><div class="ic">🎯</div><h4>Strategic Negotiation</h4><p>Crafting win-win agreements through data-driven proposals and empathetic negotiation — delivering business reviews and JBPs to high-level stakeholders with clarity and confidence.</p></div>
+      <div class="card"><div class="ic">💰</div><h4>Budget &amp; Forecast</h4><p>Managing trade spend, assessing ROI and profitability within allocation, while delivering forecast accuracy to ensure business performance.</p></div>
+      <div class="card"><div class="ic">📊</div><h4>Digital &amp; Data Analytics</h4><p>Developing dashboards and a data &amp; digital-driven mindset to build insightful plans, make accurate forecasts and deliver healthy business growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFO / TOOLKIT ============ -->
+<section class="alt" id="toolkit">
+  <div class="wrap">
+    <div class="eyebrow reveal">In My bag</div>
+    <h2 class="section-title reveal">Education, skills &amp; the tools I work with.</h2>
+    <div class="info-grid reveal" style="margin-top:30px;">
+      <div class="info-card">
+        <h4>Education</h4>
+        <div class="row"><span>Foreign Trade University — HCMC Campus</span><span>2013 – 2017</span></div>
+        <div class="row"><span>International Business Economics</span><span>Major</span></div>
+        <h4 style="margin-top:22px;">Languages</h4>
+        <div class="row"><span>Vietnamese</span><span>Native</span></div>
+        <div class="row"><span>English</span><span>IELTS 7.5</span></div>
+      </div>
+      <div class="info-card">
+        <h4>Soft Skills</h4>
+        <div class="pill-row">
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Time Management</span>
+          <span class="pill">Team Work</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Adaptability</span>
+          <span class="pill">Creativity</span>
+        </div>
+        <h4 style="margin-top:22px;">Software</h4>
+        <div class="pill-row">
+          <span class="pill solid">Microsoft Office</span>
+          <span class="pill solid">Google Workspace</span>
+          <span class="pill solid">Power BI</span>
+          <span class="pill solid">Canva Pro</span>
+          <span class="pill solid">Claude AI</span>
+        </div>
+      </div>
+      <div class="info-card" style="grid-column: 1 / -1;">
+        <h4>Categories I've worked with</h4>
+        <div class="pill-row">
+          <span class="pill">Beverage &amp; Ice Cream</span>
+          <span class="pill">Personal Care — Baby, Body, Oral, Hair</span>
+          <span class="pill">Home Care</span>
+          <span class="pill">Pet Food</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey">
+  <div class="wrap">
+    <div class="eyebrow reveal">My career journey</div>
+    <h2 class="section-title reveal">Every role taught me something that lasts.</h2>
+    <div class="timeline reveal" style="margin-top:34px;">
+      <div class="t-item">
+        <div class="when">Jul 2017 – Mar 2020</div>
+        <div class="role">Management Trainee</div>
+        <div class="co">Coca-Cola Beverages Vietnam</div>
+        <div class="desc">"I learned to bring ideas to life on the shelf."</div>
+      </div>
+      <div class="t-item">
+        <div class="when">Apr 2020 – Mar 2021</div>
+        <div class="role">Key Account Executive</div>
+        <div class="co">Johnson &amp; Johnson</div>
+        <div class="desc">"I launched into a new category and thrived."</div>
+      </div>
+      <div class="t-item">
+        <div class="when">Apr 2021 – Jun 2022</div>
+        <div class="role">Customer Planning Assistant Manager</div>
+        <div class="co">Unilever Vietnam</div>
+        <div class="desc">"I grew through the pandemic."</div>
+      </div>
+      <div class="t-item">
+        <div class="when">Jul 2022 – Jul 2024</div>
+        <div class="role">Customer Development Manager</div>
+        <div class="co">Mars Petcare</div>
+        <div class="desc">"I rebuilt the business on healthy growth."</div>
+      </div>
+      <div class="t-item">
+        <div class="when">Aug 2024 – Dec 2024</div>
+        <div class="role">Trade Marketing Manager</div>
+        <div class="co">Masan Consumer Holdings</div>
+        <div class="desc">"I turned brand plans into field execution."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section class="alt" id="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">Highlights</div>
+    <h2 class="section-title reveal">More than a promotion.</h2>
+    <p class="lead reveal" style="margin-top:14px;">Working hand-in-hand with Marketing, Trade Marketing, regional teams and customers, I turned briefs into moments shoppers remember — extending visibility across aisles and creating reasons to shop more. A discount only moves a week of volume; these moved brands and loyalty that lasted.</p>
+    <div class="hl-list reveal" style="margin-top:28px;">
+      <div class="hl-item"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola — Coke Arctic project</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Exclusive gift — Mèo Nổ boardgame by Coca-Cola</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Successful NPD launch of OGX and Neutrogena in Watsons</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div>
+    </div>
+    <!-- IMAGE SLOT: gallery (optional). Add project images here, e.g. a row of <img src="images/project-1.jpg"> -->
+    <div class="img-slot reveal" data-slot="gallery" style="margin-top:24px; min-height:220px;">Add project photos here (images/project-1.jpg …) — optional</div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES ============ -->
+<section id="cases">
+  <div class="wrap">
+    <div class="eyebrow reveal">The stories behind the wins</div>
+    <h2 class="section-title reveal">Two proudest battles, in detail.</h2>
+
+    <!-- CASE 1 -->
+    <div class="case reveal" style="margin-top:34px;">
+      <div class="case-head">
+        <div>
+          <div class="who">Johnson &amp; Johnson</div>
+          <h3>Launch into the unknown — new categories, new brands</h3>
+        </div>
+      </div>
+      <p class="lead" style="margin-bottom:24px;">New launching initiatives in brand-new categories: taking OGX and Neutrogena into Health &amp; Beauty specialty channels, then extending into premium and international hypermarkets.</p>
+      <div class="case-cols">
+        <div>
+          <h5>Pain points</h5>
+          <ul>
+            <li>Moving from mainstream Baby &amp; Oral Care into mass-premium Hair &amp; Skincare — no category experience to lean on.</li>
+            <li>Retailers demanded a premium margin that could either sink the new brands or blow the budget of the core business.</li>
+            <li>Hand-carry (grey-market) competition everywhere online, conflicting with official pricing and pulling shoppers away.</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Ideas &amp; execution</h5>
+          <ul>
+            <li><strong>Restructure, not resist</strong> — a category-fit, separate deal to meet retailers while protecting the baseline.</li>
+            <li><strong>Win on trust &amp; value</strong> — build visionary pictures so retailers co-invested in unproven categories.</li>
+            <li><strong>Partner to win</strong> — exclusive deals and strong collaboration to deliver the route-to-market plan.</li>
+            <li><strong>Launch loud</strong> — secured key events so the launch landed with standout displays, not a quiet listing.</li>
+          </ul>
+        </div>
+      </div>
+      <h5 style="margin-top:8px;">Key deliveries</h5>
+      <ul class="checks">
+        <li>Targeted the Health &amp; Beauty specialty channel, then extended into premium international hypermarkets.</li>
+        <li>Premium assortment and pricing to beat grey-market products on value and trust.</li>
+        <li>Dedicated trade terms for NPD with clear, incremental investment.</li>
+        <li>Won exclusivity with hot deals &amp; key-event activations; sampling and advisors to push trial.</li>
+        <li>Demand planning to secure a service level above 85%.</li>
+      </ul>
+      <div class="results">
+        <div class="result"><div class="r-num">+275%</div><div class="r-lab">Watsons</div></div>
+        <div class="result"><div class="r-num">+49%</div><div class="r-lab">Guardian</div></div>
+        <div class="result"><div class="r-num">+21%</div><div class="r-lab">AEON</div></div>
+      </div>
+      <div class="footnote">*Performance of the 3 launching months vs. run-rate prior 3 months.</div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case reveal">
+      <div class="case-head">
+        <div>
+          <div class="who">Mars Petcare</div>
+          <h3>Winning Pet Food in Modern Trade — from volume-driven to value-built</h3>
+        </div>
+      </div>
+      <p class="lead" style="margin-bottom:24px;">Rather than fight a losing battle to cut trade terms, I re-engineered them and invested for future growth — making every dollar work.</p>
+      <div class="case-cols">
+        <div>
+          <h5>Situation</h5>
+          <ul>
+            <li>An unhealthy revenue mix — most sales came from high-volume selling that flattered the short term but constantly conflicted with General Trade.</li>
+            <li>Budget trapped in deep discounts, with trading-term clauses that favored customers and were near-impossible to renegotiate down.</li>
+            <li>A narrow portfolio fighting itself — just 3 segments, so everyone chased the best deals on core SKUs, fueling channel conflict.</li>
+          </ul>
+          <h5 style="margin-top:8px;">Must-win battles</h5>
+          <ul>
+            <li><strong>Convert volume into value</strong> — wean the business off unhealthy high-volume sales; rebuild revenue on genuine, organic off-take.</li>
+            <li><strong>Own Modern Trade leadership</strong> — Share of Shelf &gt;55% and Assortment Share &gt;60% to lead and be the fastest on the market.</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Strategic initiatives</h5>
+          <ul>
+            <li><strong>Rebuild healthy revenue</strong> — stopped high-volume leakage, regrew organic off-take with real promotions to protect long-term P&amp;L.</li>
+            <li><strong>Revamp trade terms</strong> — converted unconditional benefits into conditional, performance-linked investment tied to growth, visibility and availability.</li>
+            <li><strong>Manage channel conflict</strong> — 80/20: secured ~80% core with quarterly key events, with floor prices pre-aligned across channels.</li>
+            <li><strong>Grow the future 20%</strong> — shifted to premium lines and bigger value packs to drive consumption and reduce reliance on sensitive SKUs.</li>
+            <li><strong>Empower team efforts</strong> — engaged the DKSH team via PG activations, bonus competitions and conferences to win free displays and expansion.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footnote">*Mars Petcare brands: Pedigree · Whiskas · Kitekat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENCES ============ -->
+<section class="alt" id="references">
+  <div class="wrap">
+    <div class="eyebrow reveal">References</div>
+    <h2 class="section-title reveal">I could tell you I'm good. They can tell you better.</h2>
+    <p class="lead reveal" style="margin-top:14px;">Meet some of the people who saw my work first-hand.</p>
+    <div class="ref-grid reveal" style="margin-top:28px;">
+      <div class="ref">
+        <div class="rn">Mr. Nguyen Le Duy Anh</div>
+        <div class="rr">Operations Manager — Total Minimart Field Lead</div>
+        <div class="rc">Unilever Vietnam</div>
+        <div class="ravail">Contact details available upon request.</div>
+      </div>
+      <div class="ref">
+        <div class="rn">Mrs. Lam Ngoc Han</div>
+        <div class="rr">Key Account Manager — Former DKSH partner</div>
+        <div class="rc">Masan Consumer Holdings</div>
+        <div class="ravail">Contact details available upon request.</div>
+      </div>
+      <div class="ref">
+        <div class="rn">Mr. Tran Ngoc Quy</div>
+        <div class="rr">Customer Development Manager — General Trade</div>
+        <div class="rc">Mars Petcare</div>
+        <div class="ravail">Contact details available upon request.</div>
+      </div>
+      <div class="ref">
+        <div class="rn">More on request</div>
+        <div class="rr">Additional references available</div>
+        <div class="rc">Across Coca-Cola, J&amp;J, Unilever &amp; Mars</div>
+        <div class="ravail">Happy to connect you with the right person for your role.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="eyebrow">Let's work together</div>
+      <h2>Built to last — now I'm ready to start.</h2>
+      <p>I'm open for hire and looking for a team to commit to, invest in, and grow with for the long term. Let's talk.</p>
+      <div class="contact-links">
+        <a href="mailto:my.vonguyenha95@gmail.com">✉ my.vonguyenha95@gmail.com</a>
+        <a href="tel:+84934651995">📞 +84 934 651 995</a>
+        <a href="https://linkedin.com/in/myvnh" target="_blank" rel="noopener">in LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1d-NQMMuWMzvjQn-zaZAtbB3szTGBXdHZ/view?usp=share_link" target="_blank" rel="noopener">⬇ Résumé</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> Vo Nguyen Ha My · Built to last.
+</footer>
+
+<script>
+  // mobile nav
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.addEventListener('click', e => { if (e.target.tagName === 'A') links.classList.remove('open'); });
+
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
