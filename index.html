@@ -62,8 +62,7 @@
     border-bottom: 1px solid var(--line);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
-  .brand { font-family: "Inter"; font-weight: 800; letter-spacing: .04em; font-size: 16px; }
-  .brand span { color: var(--accent); }
+  .brand { font-family: "Inter"; font-weight: 800; letter-spacing: .04em; font-size: 16px; background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .nav-links { display: flex; gap: 30px; align-items: center; }
   .nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
   .nav-links a:hover { color: var(--accent); }
@@ -96,8 +95,13 @@
   .hero h1 .built { display: block; }
   .hero .name-sub { font-family: "Inter"; font-weight: 600; font-size: 18px; color: var(--muted); margin-top: 6px; }
   .hero .subhead { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(22px, 3vw, 32px); color: var(--ink-soft); margin-top: 12px; letter-spacing: -.01em; }
-  .hero .tag { margin-top: 22px; font-size: 15px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); }
-  .hero .tag span { color: var(--accent); padding: 0 8px; }
+  .hero .tag { margin-top: 22px; font-size: 17px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); min-height: 30px; }
+  .hero .tag .role { display: inline-block; font-weight: 700; background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .tag .role-cursor { display: inline-block; margin-left: 3px; color: var(--accent); font-weight: 700; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero .tag.glitching .role { animation: glitchShift .14s steps(2) infinite; }
+  @keyframes glitchShift { 0%{transform:translate(0,0)} 20%{transform:translate(-1.5px,1px)} 40%{transform:translate(1.5px,-1px)} 60%{transform:translate(-1px,-1px)} 80%{transform:translate(1px,1px)} 100%{transform:translate(0,0)} }
+  @media (prefers-reduced-motion: reduce) { .hero .tag.glitching .role { animation: none; } .hero .tag .role-cursor { animation: none; } }
   .hero-actions { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
@@ -244,7 +248,7 @@
       <a href="#about">About</a>
       <a href="#skills">Expertise</a>
       <a href="#journey">Journey</a>
-      <a href="#work">Work</a>
+      <a href="#work">Highlights</a>
       <a href="#references">References</a>
       <a class="nav-cta" href="#contact">Let's connect</a>
     </nav>
@@ -260,7 +264,7 @@
       <div>
         <h1>VO NGUYEN<br>HA MY</h1>
         <div class="subhead">Built to last</div>
-        <div class="tag">KEY ACCOUNT MANAGEMENT<span>|</span>CHANNEL DEVELOPMENT<span>|</span>CATEGORY STRATEGY</div>
+        <div class="tag" id="roleTag">I AM&nbsp;<span class="role" id="roleRotator">KEY ACCOUNT MANAGER</span><span class="role-cursor">|</span></div>
         <p class="lead" style="margin-top:22px;">Eight years building key accounts, channels and categories for the biggest FMCG companies in Vietnam — delivering double-digit growth from beverages to personal care to pet care.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://drive.google.com/file/d/1d-NQMMuWMzvjQn-zaZAtbB3szTGBXdHZ/view?usp=share_link" target="_blank" rel="noopener">View my résumé →</a>
@@ -604,6 +608,59 @@
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // glitch role rotator
+  (function () {
+    const roles = ["KEY ACCOUNT MANAGER", "CHANNEL DEVELOPMENT MANAGER", "CATEGORY STRATEGIST"];
+    const el = document.getElementById('roleRotator');
+    const tag = document.getElementById('roleTag');
+    if (!el || !tag) return;
+    const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}=+*^?#";
+    let frameReq, queue = [], frame = 0, resolve;
+
+    function setText(newText) {
+      const old = el.textContent;
+      const len = Math.max(old.length, newText.length);
+      const p = new Promise(r => (resolve = r));
+      queue = [];
+      for (let i = 0; i < len; i++) {
+        const from = old[i] || '';
+        const to = newText[i] || '';
+        const start = Math.floor(Math.random() * 30);
+        const end = start + Math.floor(Math.random() * 30);
+        queue.push({ from, to, start, end, char: null });
+      }
+      cancelAnimationFrame(frameReq);
+      frame = 0;
+      update();
+      return p;
+    }
+    function update() {
+      let out = '', done = 0;
+      for (let i = 0; i < queue.length; i++) {
+        const q = queue[i];
+        if (frame >= q.end) { done++; out += q.to; }
+        else if (frame >= q.start) {
+          if (!q.char || Math.random() < 0.28) q.char = glyphs[Math.floor(Math.random() * glyphs.length)];
+          out += q.char;
+        } else { out += q.from; }
+      }
+      el.textContent = out;
+      if (done === queue.length) { resolve(); }
+      else { frameReq = requestAnimationFrame(update); frame++; }
+    }
+
+    let i = 0;
+    function cycle() {
+      tag.classList.add('glitching');
+      setText(roles[i]).then(() => {
+        tag.classList.remove('glitching');
+        i = (i + 1) % roles.length;
+        setTimeout(cycle, 1900);
+      });
+    }
+    setTimeout(cycle, 1200);
+  })();
 </script>
 </body>
 </html>
