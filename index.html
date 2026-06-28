@@ -616,7 +616,7 @@
     const tag = document.getElementById('roleTag');
     if (!el || !tag) return;
     const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}=+*^?#";
-    let frameReq, queue = [], frame = 0, resolve;
+    let frameReq, queue = [], frame = 0, resolve, raf = 0;
 
     function setText(newText) {
       const old = el.textContent;
@@ -626,8 +626,8 @@
       for (let i = 0; i < len; i++) {
         const from = old[i] || '';
         const to = newText[i] || '';
-        const start = Math.floor(Math.random() * 30);
-        const end = start + Math.floor(Math.random() * 30);
+        const start = Math.floor(Math.random() * 50);
+        const end = start + Math.floor(Math.random() * 50);
         queue.push({ from, to, start, end, char: null });
       }
       cancelAnimationFrame(frameReq);
@@ -647,7 +647,7 @@
       }
       el.textContent = out;
       if (done === queue.length) { resolve(); }
-      else { frameReq = requestAnimationFrame(update); frame++; }
+      else { frameReq = requestAnimationFrame(update); if ((raf++ % 3) === 0) frame++; }
     }
 
     let i = 0;
@@ -656,7 +656,7 @@
       setText(roles[i]).then(() => {
         tag.classList.remove('glitching');
         i = (i + 1) % roles.length;
-        setTimeout(cycle, 1900);
+        setTimeout(cycle, 2800);
       });
     }
     setTimeout(cycle, 1200);
