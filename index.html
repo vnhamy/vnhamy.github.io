@@ -91,8 +91,9 @@
   }
   .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(37,99,235,.18); }
   .hero-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 48px; align-items: center; margin-top: 26px; }
-  .hero h1 { font-size: clamp(44px, 7.2vw, 80px); font-weight: 900; letter-spacing: -.02em; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero h1 .built { display: block; }
+  .hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1.0; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 .nm-a, .hero h1 .nm-b { display: block; }
+  .hero h1 .nm-b { font-size: 1.7em; line-height: .98; margin-top: 4px; }
   .hero .name-sub { font-family: "Inter"; font-weight: 600; font-size: 18px; color: var(--muted); margin-top: 6px; }
   .hero .subhead { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(22px, 3vw, 32px); color: var(--ink-soft); margin-top: 12px; letter-spacing: -.01em; }
   .hero .tag { margin-top: 22px; font-size: 17px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); min-height: 30px; }
@@ -261,8 +262,7 @@
     <span class="badge"><span class="dot"></span> Open for hire</span>
     <div class="hero-grid">
       <div>
-        <h1>VO NGUYEN<br>HA MY</h1>
-        <div class="subhead">Built to last</div>
+        <h1><span class="nm-a">VO NGUYEN</span><span class="nm-b">HA MY</span></h1>
         <div class="tag" id="roleTag">I AM&nbsp;<span class="role" id="roleRotator">KEY ACCOUNT MANAGER</span><span class="role-cursor">|</span></div>
         <p class="lead" style="margin-top:22px;">Eight years building key accounts, channels and categories for the biggest FMCG companies in Vietnam — delivering double-digit growth from beverages to personal care to pet care.</p>
         <div class="hero-actions">
