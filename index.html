@@ -91,7 +91,7 @@
     font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
   }
   .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(37,99,235,.18); }
-  .hero-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 48px; align-items: center; margin-top: 26px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; margin-top: 26px; }
   .hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1.0; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero h1 .nm-a, .hero h1 .nm-b { display: block; }
   .hero h1 .nm-b { font-size: 1.7em; line-height: .98; margin-top: 4px; }
@@ -124,8 +124,8 @@
   }
   .img-slot img { width: 100%; height: 100%; object-fit: cover; }
   .hero .img-slot { min-height: 380px; box-shadow: var(--shadow); }
-  .hero-figure { width: 100%; }
-  .hero-figure svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .hero-figure { width: 100%; display: flex; justify-content: flex-end; }
+  .hero-figure svg { width: 48vw; max-width: 760px; height: auto; display: block; overflow: visible; }
 
   /* LETTER */
   .letter { background: var(--ink); color: #f4f1ee; border-radius: 22px; padding: 46px; box-shadow: var(--shadow); }
@@ -238,6 +238,8 @@
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
     .letter, .case, .contact { padding: 30px 22px; }
     section { padding: 64px 0; }
+    .hero-figure { justify-content: center; }
+    .hero-figure svg { width: 100%; max-width: 460px; }
   }
 </style>
 </head>
