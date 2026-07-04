@@ -7,7 +7,7 @@
 <meta name="description" content="Vo Nguyen Ha My (My) - 8 years building key accounts, channels and categories for leading FMCG companies in Vietnam. Built to last." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
     --ink: #0e1116;
@@ -67,11 +67,11 @@
   .nav-links a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
   .nav-links a:hover { color: var(--accent); }
   .nav-cta {
-    background: var(--grad-2); color: #fff; padding: 9px 18px; border-radius: 999px;
-    font-size: 13px; font-weight: 600; text-decoration: none;
-    box-shadow: 0 6px 16px rgba(79,70,229,.26); transition: .2s;
+    background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent;
+    padding: 9px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; text-decoration: none;
+    border: 1.5px solid #cdbef5; transition: .2s;
   }
-  .nav-cta:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .nav-cta:hover { -webkit-background-clip: border-box; background-clip: border-box; -webkit-text-fill-color: #fff; color: #fff; border-color: transparent; transform: translateY(-1px); }
   .burger { display: none; background: none; border: 0; font-size: 24px; cursor: pointer; }
 
   /* HERO */
@@ -111,8 +111,8 @@
   }
   .btn-primary { background: var(--grad-2); color: #fff; box-shadow: 0 8px 22px rgba(79,70,229,.28); }
   .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
-  .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
-  .btn-ghost:hover { border-color: var(--ink); }
+  .btn-ghost { background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; border-color: #cdbef5; font-weight: 700; }
+  .btn-ghost:hover { -webkit-background-clip: border-box; background-clip: border-box; -webkit-text-fill-color: #fff; color: #fff; border-color: transparent; transform: translateY(-1px); }
 
   /* image slot */
   .img-slot {
@@ -124,6 +124,8 @@
   }
   .img-slot img { width: 100%; height: 100%; object-fit: cover; }
   .hero .img-slot { min-height: 380px; box-shadow: var(--shadow); }
+  .hero-figure { width: 100%; }
+  .hero-figure svg { width: 100%; height: auto; display: block; overflow: visible; }
 
   /* LETTER */
   .letter { background: var(--ink); color: #f4f1ee; border-radius: 22px; padding: 46px; box-shadow: var(--shadow); }
@@ -251,7 +253,6 @@
       <a href="#journey">Journey</a>
       <a href="#work">Highlights</a>
       <a href="#references">References</a>
-      <a class="nav-cta" href="#contact">Let's connect</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
   </div>
@@ -268,12 +269,34 @@
         <p class="lead" style="margin-top:22px;">Eight years building key accounts, channels and categories for some leading FMCG companies in Vietnam - delivering double-digit growth from beverages to personal care to pet care.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://drive.google.com/file/d/1d-NQMMuWMzvjQn-zaZAtbB3szTGBXdHZ/view?usp=share_link" target="_blank" rel="noopener">View my résumé →</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#contact">Let's connect</a>
         </div>
       </div>
-      <!-- IMAGE SLOT: headshot. Replace the inner text with: <img src="images/headshot.jpg" alt="Vo Nguyen Ha My"> -->
-      <div class="img-slot" data-slot="headshot">
-        Your headshot goes here<br>(images/headshot.jpg)
+      <div class="hero-figure">
+        <svg viewBox="0 0 1000 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vo Nguyen Ha My working on a laptop, with three highlights: 8 years in Modern Trade, grow with emerging channels, built to last.">
+          <defs>
+            <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#9333EA"/>
+            </linearGradient>
+            <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#7C3AED"/>
+            </marker>
+          </defs>
+          <image href="headshot.png" x="278" y="150" width="450" height="590"/>
+          <g fill="none" stroke="url(#ink)" stroke-width="3.4" stroke-linecap="round">
+            <path d="M300,152 C 352,140 322,206 364,215 C 404,224 420,233 452,258" marker-end="url(#ah)"/>
+            <path d="M742,398 C 690,408 736,470 692,506 C 662,529 674,592 670,640" marker-end="url(#ah)"/>
+            <path d="M452,896 C 470,852 452,816 486,793 C 500,783 498,772 502,752" marker-end="url(#ah)"/>
+          </g>
+          <g font-family="'Caveat', cursive" fill="url(#ink)" font-weight="700">
+            <text x="52" y="150" font-size="42">8 years</text>
+            <text x="52" y="196" font-size="42">in Modern Trade</text>
+            <text x="752" y="332" font-size="40">grow with</text>
+            <text x="752" y="376" font-size="40">emerging</text>
+            <text x="752" y="420" font-size="40">channels</text>
+            <text x="322" y="946" font-size="54">built to last</text>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
