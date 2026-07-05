@@ -280,21 +280,25 @@
             <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#9333EA"/>
             </linearGradient>
-            <radialGradient id="halo" cx="50%" cy="44%" r="62%">
-              <stop offset="0" stop-color="#7C5AF0" stop-opacity="0.24"/>
-              <stop offset="55%" stop-color="#6366F1" stop-opacity="0.10"/>
-              <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
-            </radialGradient>
+            <filter id="glow" x="-45%" y="-45%" width="190%" height="190%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="17" result="b1"/>
+              <feFlood flood-color="#b7ccff" flood-opacity="0.78"/>
+              <feComposite in2="b1" operator="in" result="g1"/>
+              <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b2"/>
+              <feFlood flood-color="#e9f2ff" flood-opacity="0.85"/>
+              <feComposite in2="b2" operator="in" result="g2"/>
+              <feMerge><feMergeNode in="g1"/><feMergeNode in="g2"/></feMerge>
+            </filter>
             <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0,0 L10,5 L0,10 z" fill="#7C3AED"/>
             </marker>
           </defs>
-          <ellipse cx="500" cy="470" rx="335" ry="415" fill="url(#halo)"/>
-          <image href="headshot.png" x="285" y="150" width="430" height="684"/>
+          <image href="headshot.png" x="260" y="150" width="480" height="597" filter="url(#glow)"/>
+          <image href="headshot.png" x="260" y="150" width="480" height="597"/>
           <g fill="none" stroke="url(#ink)" stroke-width="3.4" stroke-linecap="round">
-            <path d="M300,168 C 352,150 322,214 372,224 C 430,236 470,244 512,262" marker-end="url(#ah)"/>
-            <path d="M752,372 C 716,388 704,400 678,388 C 672,386 670,386 666,386" marker-end="url(#ah)"/>
-            <path d="M452,898 C 470,854 456,812 492,792 C 500,787 500,778 502,766" marker-end="url(#ah)"/>
+            <path d="M300,168 C 346,150 324,206 356,224 C 372,236 378,246 384,256" marker-end="url(#ah)"/>
+            <path d="M758,380 C 742,398 752,432 732,448 C 730,449 729,449 728,450" marker-end="url(#ah)"/>
+            <path d="M452,900 C 456,862 452,832 450,800 C 449,790 449,784 449,778" marker-end="url(#ah)"/>
           </g>
           <g font-family="'Caveat', cursive" fill="url(#ink)" font-weight="700">
             <text x="52" y="150" font-size="42">8 years</text>
