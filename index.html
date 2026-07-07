@@ -234,10 +234,25 @@
   .t-item .desc { font-size: 14.5px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
 
   /* highlight list */
-  .hl-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 6px; }
-  .hl-item { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow); }
+  .hl-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 6px; }
+  .hl-item { display: flex; flex-direction: column; gap: 15px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 15px; box-shadow: var(--shadow); transition: box-shadow .35s ease; }
+  .hl-img { position: relative; border-radius: 13px; }
+  .hl-img::before { content: ""; position: absolute; inset: 12px; border-radius: 13px; background: var(--grad); filter: blur(24px); opacity: .5; z-index: 0; transition: opacity .4s ease; }
+  .hl-img img { position: relative; z-index: 1; display: block; width: 100%; height: 178px; object-fit: cover; border-radius: 13px; box-shadow: 0 8px 22px rgba(2,6,23,.16); }
+  .hl-item:hover { box-shadow: 0 18px 40px rgba(79,70,229,.18); }
+  .hl-item:hover .hl-img::before { opacity: .92; }
+  .hl-txt { display: flex; gap: 12px; align-items: flex-start; }
   .hl-item .mk { color: var(--accent); font-size: 18px; margin-top: 1px; }
-  .hl-item p { margin: 0; font-size: 15px; color: var(--ink-soft); font-weight: 500; }
+  .hl-item p { margin: 0; font-size: 15px; color: var(--ink-soft); font-weight: 600; line-height: 1.45; }
+  @keyframes hlpop { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: none; } }
+  .hl-item.reveal { opacity: 0; transform: none; transition: box-shadow .35s ease; }
+  .hl-item.reveal.in { animation: hlpop .65s cubic-bezier(.2,.75,.25,1) both; }
+  .hl-item.reveal.in:nth-child(1) { animation-delay: .00s; }
+  .hl-item.reveal.in:nth-child(2) { animation-delay: .10s; }
+  .hl-item.reveal.in:nth-child(3) { animation-delay: .20s; }
+  .hl-item.reveal.in:nth-child(4) { animation-delay: .30s; }
+  .hl-item.reveal.in:nth-child(5) { animation-delay: .40s; }
+  .hl-item.reveal.in:nth-child(6) { animation-delay: .50s; }
 
   /* CASE STUDY */
   .case { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 40px; box-shadow: var(--shadow); }
@@ -609,16 +624,14 @@
     <div class="eyebrow reveal">Highlights</div>
     <h2 class="section-title reveal">More than a promotion.</h2>
     <p class="lead reveal" style="margin-top:14px;">Working hand-in-hand with Marketing, Trade Marketing, regional teams and customers, I turned briefs into moments shoppers remember - extending visibility across aisles and creating reasons to shop more. A discount only moves a week of volume; these moved brands and loyalty that lasted.</p>
-    <div class="hl-list reveal" style="margin-top:28px;">
-      <div class="hl-item"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola - Coke Arctic project</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Exclusive gift - Mèo Nổ boardgame by Coca-Cola</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div>
+    <div class="hl-list" style="margin-top:28px;">
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl1.jpg" alt="Coke Arctic project - 7-Eleven x Coca-Cola" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola - Coke Arctic project</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl2.jpg" alt="Energy drinks activation across CVS" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl3.jpg" alt="Mèo Nổ boardgame gift by Coca-Cola" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Exclusive gift - Mèo Nổ boardgame by Coca-Cola</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl4.jpg" alt="Simple skincare NPD launch in Watsons" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl5.jpg" alt="3-category collaboration in Circle K" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><img src="hl6.jpg" alt="Thematic ice cream events in CVS" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div></div>
     </div>
-    <!-- IMAGE SLOT: gallery (optional). Add project images here, e.g. a row of <img src="images/project-1.jpg"> -->
-    <div class="img-slot reveal" data-slot="gallery" style="margin-top:24px; min-height:220px;">Add project photos here (images/project-1.jpg …) - optional</div>
   </div>
 </section>
 
