@@ -127,12 +127,34 @@
   .hero-figure { width: 100%; display: flex; justify-content: center; }
   .hero-figure svg { width: 52vw; max-width: 820px; height: auto; display: block; overflow: visible; flex-shrink: 0; }
 
-  /* LETTER */
-  .letter { background: var(--ink); color: #f4f1ee; border-radius: 22px; padding: 46px; box-shadow: var(--shadow); }
-  .letter .eyebrow { color: #c4b5fd; }
-  .letter h3 { font-size: 26px; margin-bottom: 16px; }
-  .letter p { color: #cfd2d8; margin: 0 0 16px; }
-  .letter .sign { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 20px; color: #fff; margin-top: 10px; }
+  /* ENVELOPE + LETTER */
+  .envelope-stage { position: relative; display: flex; justify-content: center; align-items: center; min-height: 460px; perspective: 1400px; cursor: pointer; }
+  .envelope-stage .hint { position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--muted); font-weight: 600; letter-spacing: .03em; display: flex; align-items: center; gap: 6px; transition: opacity .4s ease; }
+  .envelope-stage .hint .arrow { display: inline-block; animation: bob 1.4s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+  .envelope-stage.open .hint { opacity: 0; pointer-events: none; }
+
+  .envelope { position: absolute; top: 50%; left: 50%; z-index: 2; width: clamp(260px, 70vw, 380px); height: clamp(172px, 46.2vw, 251px); transform: translate(-50%,-50%); transition: opacity .55s ease .85s, transform .55s ease .85s; }
+  .envelope-stage.open .envelope { opacity: 0; transform: translate(-50%,-50%) scale(.8) translateY(-14px); }
+  .env-body { position: relative; width: 100%; height: 100%; border-radius: 12px; background: linear-gradient(135deg,#4F46E5,#312E81); box-shadow: 0 20px 50px rgba(49,46,129,.4); overflow: hidden; }
+  .env-pocket { position: absolute; inset: 0; clip-path: polygon(0 100%, 50% 42%, 100% 100%); background: linear-gradient(160deg,#4338CA,#312E81); }
+  .env-flap { position: absolute; top: 0; left: 0; right: 0; height: 58%; clip-path: polygon(0 0, 100% 0, 50% 100%); background: linear-gradient(200deg,#5B54E8,#3730A3); transform-origin: top center; transition: transform .85s cubic-bezier(.6,.15,.25,1); box-shadow: 0 6px 18px rgba(30,27,90,.4); z-index: 3; }
+  .envelope-stage.open .env-flap { transform: rotateX(-158deg); }
+  .env-seal { position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,#e8c368,#b8863a); display: flex; align-items: center; justify-content: center; color: #4a2f08; font-family: "Fraunces", serif; font-weight: 900; font-size: 17px; box-shadow: 0 4px 14px rgba(120,86,20,.5); z-index: 4; }
+  .env-addr { position: absolute; left: 12%; bottom: 15%; color: #c3c8ee; font-size: 11.5px; letter-spacing: .05em; z-index: 2; line-height: 1.5; }
+  .env-stamp { position: absolute; right: 8%; top: 9%; width: 34px; height: 40px; border: 2px dashed rgba(196,181,253,.5); border-radius: 3px; z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #c4b5fd; }
+
+  .letter-paper { position: relative; z-index: 1; width: min(560px, 92%); background: #fdfbf5; color: #2a2a28; border-radius: 8px; padding: clamp(28px,4vw,50px) clamp(24px,4.4vw,54px); box-shadow: 0 26px 60px rgba(0,0,0,.28), 0 1px 0 rgba(0,0,0,.05) inset; opacity: 0; transform: scale(.72) translateY(26px); transition: opacity .7s cubic-bezier(.2,.8,.2,1) .92s, transform .7s cubic-bezier(.2,.8,.2,1) .92s; }
+  .envelope-stage.open .letter-paper { opacity: 1; transform: scale(1) translateY(0); }
+  .letter-paper .eyebrow { color: var(--accent-deep); }
+  .letter-paper h3 { font-size: clamp(20px,2.6vw,26px); margin-bottom: 16px; color: #1b1c1f; }
+  .letter-paper p { color: #41403c; margin: 0 0 16px; }
+  .letter-paper .fold { position: absolute; left: 6%; right: 6%; top: 50%; border-top: 1px dashed rgba(0,0,0,.1); }
+  .letter-paper .sign { font-family: "Caveat", cursive; font-weight: 700; font-size: 34px; color: var(--accent-deep); margin-top: 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .envelope, .env-flap, .letter-paper, .envelope-stage .hint { transition: none !important; animation: none !important; }
+  }
 
   /* STATS */
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 14px; }
@@ -236,7 +258,9 @@
     .grid-3 { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2,1fr); }
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
-    .letter, .case, .contact { padding: 30px 22px; }
+    .case, .contact { padding: 30px 22px; }
+    .letter-paper { padding: 24px 20px; }
+    .envelope-stage { min-height: 380px; }
     section { padding: 64px 0; }
     .hero-figure { justify-content: center; }
     .hero-figure svg { width: 100%; max-width: 460px; }
@@ -317,13 +341,26 @@
 <!-- ============ LETTER ============ -->
 <section class="alt" id="welcome">
   <div class="wrap">
-    <div class="letter reveal">
-      <div class="eyebrow">A note to my visitors</div>
-      <h3>Thank you for opening this - it means more than you know.</h3>
-      <p>Eighteen months ago I stepped away from a career I love to welcome twins. But I didn't stop growing - I changed what I was growing. I learned to lead on no sleep, to prioritize ruthlessly, and to stay calm when everything is on fire. It turns out those are exactly the skills that make a sharper commercial manager, not a rusty one.</p>
-      <p>Now I'm bringing my track record back - with a new edge in data and e-commerce, and a hunger I've never had before. The pages ahead cover every aspect of my work: who I am, my results at a glance, the skills and learning that shaped me, and the stories behind some of my proudest wins across Coca-Cola, Johnson &amp; Johnson, Unilever and Mars.</p>
-      <p>I hope it gives you a clear and honest picture of the value I could bring to your team. Enjoy your visit!</p>
-      <div class="sign">- My</div>
+    <div class="envelope-stage reveal" id="envelopeStage" role="button" tabindex="0" aria-label="Open the note to visitors">
+      <div class="envelope" aria-hidden="true">
+        <div class="env-body">
+          <div class="env-pocket"></div>
+          <div class="env-addr">To: My future team,<br>Ho Chi Minh City</div>
+          <div class="env-stamp">✉</div>
+          <div class="env-flap"></div>
+          <div class="env-seal">M</div>
+        </div>
+      </div>
+      <div class="letter-paper">
+        <div class="fold"></div>
+        <div class="eyebrow">A note to my visitors</div>
+        <h3>Thank you for opening this - it means more than you know.</h3>
+        <p>Eighteen months ago I stepped away from a career I love to welcome twins. But I didn't stop growing - I changed what I was growing. I learned to lead on no sleep, to prioritize ruthlessly, and to stay calm when everything is on fire. It turns out those are exactly the skills that make a sharper commercial manager, not a rusty one.</p>
+        <p>Now I'm bringing my track record back - with a new edge in data and e-commerce, and a hunger I've never had before. The pages ahead cover every aspect of my work: who I am, my results at a glance, the skills and learning that shaped me, and the stories behind some of my proudest wins across Coca-Cola, Unilever and Mars.</p>
+        <p>I hope it gives you a clear and honest picture of the value I could bring to your team. Enjoy your visit!</p>
+        <div class="sign">- My</div>
+      </div>
+      <div class="hint"><span class="arrow">↓</span>&nbsp;Tap the envelope to open&nbsp;<span class="arrow">↓</span></div>
     </div>
   </div>
 </section>
@@ -355,7 +392,7 @@
     <h2 class="section-title reveal">A track record across four FMCG leaders.</h2>
     <div class="stats" style="margin-top:30px;">
       <div class="stat reveal"><div class="num">8 yrs</div><div class="lab">Commercial experience in FMCG</div></div>
-      <div class="stat reveal"><div class="num">4</div><div class="lab">Global companies: Coca-Cola, J&amp;J, Unilever, Mars</div></div>
+      <div class="stat reveal"><div class="num">3</div><div class="lab">Global companies: Coca-Cola, Unilever, Mars</div></div>
       <div class="stat reveal"><div class="num">+275%</div><div class="lab">Peak launch growth (Watsons, NPD)</div></div>
       <div class="stat reveal"><div class="num">4+</div><div class="lab">Categories: beverage, personal care, home care, pet food</div></div>
     </div>
@@ -432,33 +469,27 @@
     <div class="timeline reveal" style="margin-top:34px;">
       <div class="t-item">
         <div class="when">Jul 2017 – Mar 2020</div>
-        <div class="role">Management Trainee</div>
+        <div class="role">Management Trainee — Sales Function</div>
         <div class="co">Coca-Cola Beverages Vietnam</div>
         <div class="desc">"I learned to bring ideas to life on the shelf."</div>
       </div>
       <div class="t-item">
-        <div class="when">Apr 2020 – Mar 2021</div>
-        <div class="role">Key Account Executive</div>
-        <div class="co">Johnson &amp; Johnson</div>
-        <div class="desc">"I launched into a new category and thrived."</div>
-      </div>
-      <div class="t-item">
-        <div class="when">Apr 2021 – Jun 2022</div>
+        <div class="when">Apr 2020 – Oct 2022</div>
         <div class="role">Customer Planning Assistant Manager</div>
         <div class="co">Unilever Vietnam</div>
-        <div class="desc">"I grew through the pandemic."</div>
+        <div class="desc">"I grew a US$60M portfolio through the pandemic."</div>
       </div>
       <div class="t-item">
-        <div class="when">Jul 2022 – Jul 2024</div>
-        <div class="role">Customer Development Manager</div>
+        <div class="when">Nov 2022 – Dec 2024</div>
+        <div class="role">Customer Development Manager — Modern Trade</div>
         <div class="co">Mars Petcare</div>
         <div class="desc">"I rebuilt the business on healthy growth."</div>
       </div>
       <div class="t-item">
-        <div class="when">Aug 2024 – Dec 2024</div>
-        <div class="role">Trade Marketing Manager</div>
-        <div class="co">Masan Consumer Holdings</div>
-        <div class="desc">"I turned brand plans into field execution."</div>
+        <div class="when">Dec 2024 – Present</div>
+        <div class="role">Career break &amp; professional up-skilling</div>
+        <div class="co">Data analytics · E-commerce · Omni-channel</div>
+        <div class="desc">"I turned the pause into a data &amp; e-commerce edge."</div>
       </div>
     </div>
   </div>
@@ -474,7 +505,7 @@
       <div class="hl-item"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola - Coke Arctic project</p></div>
       <div class="hl-item"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div>
       <div class="hl-item"><span class="mk">◆</span><p>Exclusive gift - Mèo Nổ boardgame by Coca-Cola</p></div>
-      <div class="hl-item"><span class="mk">◆</span><p>Successful NPD launch of OGX and Neutrogena in Watsons</p></div>
+      <div class="hl-item"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div>
       <div class="hl-item"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div>
       <div class="hl-item"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div>
     </div>
@@ -493,17 +524,17 @@
     <div class="case reveal" style="margin-top:34px;">
       <div class="case-head">
         <div>
-          <div class="who">Johnson &amp; Johnson</div>
-          <h3>Launch into the unknown - new categories, new brands</h3>
+          <div class="who">Unilever Vietnam</div>
+          <h3>Launch into the unknown - a new brand in a new category</h3>
         </div>
       </div>
-      <p class="lead" style="margin-bottom:24px;">New launching initiatives in brand-new categories: taking OGX and Neutrogena into Health &amp; Beauty specialty channels, then extending into premium and international hypermarkets.</p>
+      <p class="lead" style="margin-bottom:24px;">New launching initiative in a brand-new category: taking Simple into Health &amp; Beauty specialty channels, then extending into premium and international hypermarkets.</p>
       <div class="case-cols">
         <div>
           <h5>Pain points</h5>
           <ul>
-            <li>Moving from mainstream Baby &amp; Oral Care into mass-premium Hair &amp; Skincare - no category experience to lean on.</li>
-            <li>Retailers demanded a premium margin that could either sink the new brands or blow the budget of the core business.</li>
+            <li>Moving from mainstream Baby &amp; Oral Care into mass-premium Skincare - no category experience to lean on.</li>
+            <li>Retailers demanded a premium margin that could either sink the new brand or blow the budget of the core business.</li>
             <li>Hand-carry (grey-market) competition everywhere online, conflicting with official pricing and pulling shoppers away.</li>
           </ul>
         </div>
@@ -528,7 +559,7 @@
       <div class="results">
         <div class="result"><div class="r-num">+275%</div><div class="r-lab">Watsons</div></div>
         <div class="result"><div class="r-num">+49%</div><div class="r-lab">Guardian</div></div>
-        <div class="result"><div class="r-num">+21%</div><div class="r-lab">AEON</div></div>
+        <div class="result"><div class="r-num">+21%</div><div class="r-lab">Glam Beautique</div></div>
       </div>
       <div class="footnote">*Performance of the 3 launching months vs. run-rate prior 3 months.</div>
     </div>
@@ -587,8 +618,8 @@
       </div>
       <div class="ref">
         <div class="rn">Mrs. Lam Ngoc Han</div>
-        <div class="rr">Key Account Manager - Former DKSH partner</div>
-        <div class="rc">Masan Consumer Holdings</div>
+        <div class="rr">Ex-Key Account Manager</div>
+        <div class="rc">DKSH</div>
         <div class="ravail">Contact details available upon request.</div>
       </div>
       <div class="ref">
@@ -600,7 +631,7 @@
       <div class="ref">
         <div class="rn">More on request</div>
         <div class="rr">Additional references available</div>
-        <div class="rc">Across Coca-Cola, J&amp;J, Unilever &amp; Mars</div>
+        <div class="rc">Across Coca-Cola, Unilever &amp; Mars</div>
         <div class="ravail">Happy to connect you with the right person for your role.</div>
       </div>
     </div>
@@ -643,6 +674,20 @@
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // envelope: opens automatically the first time it scrolls into view,
+  // and can be tapped/clicked to open or close again afterwards
+  (function () {
+    const stage = document.getElementById('envelopeStage');
+    if (!stage) return;
+    const toggle = () => stage.classList.toggle('open');
+    stage.addEventListener('click', toggle);
+    stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    const envIO = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { stage.classList.add('open'); envIO.unobserve(en.target); } });
+    }, { threshold: 0.5 });
+    envIO.observe(stage);
+  })();
 
   // role rotator - clean fade swap, title by title
   (function () {
