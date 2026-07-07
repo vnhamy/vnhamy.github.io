@@ -293,6 +293,17 @@
   footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
   /* reveal animation */
+  .kd-goal { display: inline-block; margin: 8px 0 20px; padding: 9px 18px; border-radius: 999px; background: var(--grad-2); color: #fff; font-family: "Inter"; font-weight: 700; font-size: 13.5px; letter-spacing: .01em; box-shadow: 0 8px 20px rgba(79,70,229,.26); }
+  .kd-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .kd-col { background: #fff; border: 1px solid var(--line); border-radius: 15px; padding: 17px 17px 8px; box-shadow: var(--shadow); }
+  .kd-h { font-family: "Inter"; font-weight: 800; font-size: 12px; letter-spacing: .03em; text-transform: uppercase; background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 13px; line-height: 1.32; }
+  .kd-list { list-style: none; margin: 0; padding: 0; }
+  .kd-list li { position: relative; padding-left: 25px; margin: 0 0 11px; font-size: 13px; color: var(--ink-soft); font-weight: 600; line-height: 1.4; }
+  .kd-list li::before { content: ""; position: absolute; left: 0; top: 1px; width: 16px; height: 16px; border-radius: 5px; background: var(--grad-2); box-shadow: 0 2px 6px rgba(79,70,229,.28); }
+  .kd-list li::after { content: ""; position: absolute; left: 5px; top: 4px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .rp-gallery { column-count: 4; column-gap: 14px; margin-top: 12px; }
+  .rp-gallery img { width: 100%; margin: 0 0 14px; border-radius: 12px; display: block; box-shadow: 0 8px 20px rgba(2,6,23,.14); break-inside: avoid; transition: transform .35s ease, box-shadow .35s ease; }
+  .rp-gallery img:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 16px 34px rgba(79,70,229,.20); }
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
@@ -304,6 +315,8 @@
     .grid-3 { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2,1fr); }
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
+    .kd-grid { grid-template-columns: 1fr 1fr; }
+    .rp-gallery { column-count: 2; }
     .cat-grid { grid-template-columns: 1fr 1fr; }
     .journey-grid { grid-template-columns: 1fr; }
     .journey-panel { position: static; }
@@ -720,6 +733,57 @@
           </ul>
         </div>
       </div>
+
+      <h5 style="margin-top:30px;">Key deliveries checklist</h5>
+      <div class="kd-goal">2024 MT Focus — Win back growth for MT</div>
+      <div class="kd-grid">
+        <div class="kd-col">
+          <div class="kd-h">Distribution &amp; Assortment Expansion</div>
+          <ul class="kd-list">
+            <li>Expansion in CVS / Minimart</li>
+            <li>Increase Share of Assortment &amp; Distribution</li>
+            <li>First to win in Omni Channel</li>
+          </ul>
+        </div>
+        <div class="kd-col">
+          <div class="kd-h">In-Store Category Management</div>
+          <ul class="kd-list">
+            <li>Educational In-Store Visibility Plan</li>
+            <li>Lead In-Store Category Activity</li>
+            <li>Win in Share of Shelf and Planogram</li>
+            <li>Join Seasonal Event</li>
+          </ul>
+        </div>
+        <div class="kd-col">
+          <div class="kd-h">Budget Optimization</div>
+          <ul class="kd-list">
+            <li>Optimize Trade Term Spending by Customer</li>
+            <li>ROI Driven for Promotion with competitive Price Index</li>
+            <li>Quarterly Post-Evaluation for Rental</li>
+          </ul>
+        </div>
+        <div class="kd-col">
+          <div class="kd-h">Operations Excellence</div>
+          <ul class="kd-list">
+            <li>Improve Service Level</li>
+            <li>Improve Forecast Accuracy</li>
+            <li>Performance-driven Incentive Program to reward and motivate</li>
+          </ul>
+        </div>
+      </div>
+
+      <h5 style="margin-top:30px;">Real performance highlights</h5>
+      <div class="rp-gallery">
+        <img src="rp1.jpg" alt="Mars Petcare shelf display in Modern Trade" loading="lazy">
+        <img src="rp2.jpg" alt="Pet care aisle activation" loading="lazy">
+        <img src="rp3.jpg" alt="Planogram and share of shelf execution" loading="lazy">
+        <img src="rp4.jpg" alt="Whiskas seasonal display" loading="lazy">
+        <img src="rp5.jpg" alt="Pedigree secondary display" loading="lazy">
+        <img src="rp6.jpg" alt="In-store category visibility" loading="lazy">
+        <img src="rp7.jpg" alt="Mars Petcare activation event" loading="lazy">
+        <img src="rp8.jpg" alt="Whiskas sampling and advisor activation" loading="lazy">
+      </div>
+
       <div class="footnote">*Mars Petcare brands: Pedigree · Whiskas · Kitekat.</div>
     </div>
   </div>
