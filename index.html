@@ -188,6 +188,27 @@
   .info-card .row:last-child { border-bottom: 0; }
   .info-card .row span:first-child { color: var(--ink-soft); font-weight: 600; }
   .info-card .row span:last-child { color: var(--muted); text-align: right; }
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+  .cat-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 16px; text-align: center; transition: .2s; }
+  .cat-item:hover { transform: translateY(-3px); border-color: #c7cdf0; }
+  .cat-item .ic { margin: 0 auto 12px; }
+  .cat-item .cat-name { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 15.5px; }
+  .cat-item .cat-sub { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  /* journey layout + staggered reveal */
+  .journey-grid { display: grid; grid-template-columns: 1.25fr .85fr; gap: 48px; align-items: start; }
+  #timeline .t-item { opacity: 0; transform: translateX(-20px); transition: opacity .7s ease, transform .7s ease; }
+  #timeline.play .t-item { opacity: 1; transform: none; }
+  #timeline.play .t-item:nth-child(1) { transition-delay: .05s; }
+  #timeline.play .t-item:nth-child(2) { transition-delay: .65s; }
+  #timeline.play .t-item:nth-child(3) { transition-delay: 1.25s; }
+  #timeline.play .t-item:nth-child(4) { transition-delay: 1.85s; }
+  .journey-panel { position: sticky; top: 96px; background: linear-gradient(160deg,#f3f2ff,#eef4ff); border: 1px solid #e2e0f5; border-radius: 20px; padding: 34px 30px; box-shadow: var(--shadow); }
+  .journey-panel .jp-eyebrow { font-family: "Inter"; text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 700; color: var(--accent); }
+  .journey-panel .jp-num { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: 64px; line-height: 1; background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 10px 0 2px; }
+  .journey-panel .jp-cap { font-size: 15px; color: var(--ink-soft); font-weight: 500; }
+  .journey-panel .jp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+  .journey-panel .jp-chip { background: #fff; border: 1px solid #d8d5f0; border-radius: 999px; padding: 6px 13px; font-size: 12.5px; font-weight: 600; color: var(--accent-deep); }
+  .journey-panel .jp-foot { margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cdc9ec; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 17px; color: var(--ink); }
 
   /* TIMELINE */
   .timeline { position: relative; margin-top: 20px; }
@@ -258,6 +279,9 @@
     .grid-3 { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2,1fr); }
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+    .journey-grid { grid-template-columns: 1fr; }
+    .journey-panel { position: static; }
     .case, .contact { padding: 30px 22px; }
     .letter-paper { padding: 24px 20px; }
     .envelope-stage { min-height: 380px; }
@@ -409,7 +433,7 @@
     <div class="grid-3 reveal" style="margin-top:34px;">
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M3.4 19c0-2.9 2.3-4.6 5.1-4.6s5.1 1.7 5.1 4.6"/><circle cx="17" cy="9" r="2.3"/><path d="M15.2 14.7c2.7-.4 5 1.1 5 4"/></svg></div><h4>Relationship Management</h4><p>Building and nurturing partnerships with internal and external stakeholders, from key account partners to executive-level clients, that drive long-term loyalty and growth.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><rect x="7" y="12" width="2.8" height="5" rx="0.7"/><rect x="11.6" y="9" width="2.8" height="8" rx="0.7"/><rect x="16.2" y="6.4" width="2.8" height="10.6" rx="0.7"/></svg></div><h4>Digital &amp; Data Analytics</h4><p>Developing dashboards and a data &amp; digital-driven mindset to build insightful plans, make accurate forecasts and deliver healthy business growth.</p></div>
-      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6v16.4"/><path d="M8 20h8"/><path d="M4.5 7.6h15"/><path d="M4.5 7.6 2.2 12.4"/><path d="M4.5 7.6 6.8 12.4"/><path d="M2.2 12.4a2.3 2.3 0 0 0 4.6 0"/><path d="M19.5 7.6 17.2 12.4"/><path d="M19.5 7.6 21.8 12.4"/><path d="M17.2 12.4a2.3 2.3 0 0 0 4.6 0"/><circle cx="12" cy="3.6" r="1.1"/></svg></div><h4>Strategic Negotiation</h4><p>Crafting win-win agreements through data-driven proposals and empathetic negotiation - delivering business reviews and JBPs to high-level stakeholders with clarity and confidence.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="url(#ig)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v16.2"/><path d="M7.5 19.6h9"/><circle cx="12" cy="3.4" r="1.05"/><path d="M3.5 7.2h17"/><path d="M6.2 7.2 3.4 13"/><path d="M6.2 7.2 9 13"/><path d="M3.1 13a3.1 3.1 0 0 0 6.2 0"/><path d="M17.8 7.2 15 13"/><path d="M17.8 7.2 20.6 13"/><path d="M14.9 13a3.1 3.1 0 0 0 6.2 0"/></svg></div><h4>Strategic Negotiation</h4><p>Crafting win-win agreements through data-driven proposals and empathetic negotiation - delivering business reviews and JBPs to high-level stakeholders with clarity and confidence.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M7 15l3.6-3.6 3 3L20 8"/><path d="M15.6 8H20v4.4"/></svg></div><h4>Revenue Growth Strategy</h4><p>Building and structuring channels and categories from the fundamentals up, designing the processes to keep them growing, and identifying opportunities to maximize lifetime value.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 2 3.9 5 3.9 8.3L12 15.2 8.1 11.3C8.1 8 9.5 5 12 3z"/><circle cx="12" cy="8.6" r="1.4"/><path d="M8.1 12.6 6 15l2.6.4"/><path d="M15.9 12.6 18 15l-2.6.4"/><path d="M10.5 17.6 12 20.2l1.5-2.6"/></svg></div><h4>New Product Initiative</h4><p>Taking new products from first listing to on-shelf - assortment, route-to-market and activation. Mindset: "Build the incremental from fundamentals that shapes the future."</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="url(#ig)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12.5" rx="2.6"/><path d="M15.4 10.6H21v4.4h-5.6a2.2 2.2 0 0 1 0-4.4z"/><circle cx="16.9" cy="12.8" r="0.7" fill="url(#ig)" stroke="none"/></svg></div><h4>Budget &amp; Forecast</h4><p>Managing trade spend, assessing ROI and profitability within allocation, while delivering forecast accuracy to ensure business performance.</p></div>
@@ -452,11 +476,25 @@
       </div>
       <div class="info-card" style="grid-column: 1 / -1;">
         <h4>Categories I've worked with</h4>
-        <div class="pill-row">
-          <span class="pill">Beverage &amp; Ice Cream</span>
-          <span class="pill">Personal Care - Baby, Body, Oral, Hair, Deodorant</span>
-          <span class="pill">Home Care: Fabric Solutions, Home Cleaners, Culinary</span>
-          <span class="pill">Pet Food</span>
+        <div class="cat-grid">
+          <div class="cat-item">
+            <div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="url(#ig)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 9.5a3.5 3.5 0 0 1 7 0"/><path d="M8 9.5h8l-3.4 10.5a.6.6 0 0 1-1.2 0z"/></svg></div>
+            <div class="cat-name">Beverage &amp; Ice Cream</div>
+          </div>
+          <div class="cat-item">
+            <div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="url(#ig)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8.5V7a2 2 0 0 1 4 0v1.5"/><path d="M11 4.5h2"/><rect x="8.5" y="8.5" width="7" height="11.5" rx="2"/><path d="M8.5 13h7"/></svg></div>
+            <div class="cat-name">Personal Care</div>
+            <div class="cat-sub">Baby, Body, Oral, Hair, Deodorant</div>
+          </div>
+          <div class="cat-item">
+            <div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="url(#ig)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="10" width="6" height="10" rx="1.6"/><path d="M8.5 10V7.5h3"/><path d="M11.5 7.5h3l1.4-1.6"/><path d="M17.2 5.2l1.6-1M17.6 7h1.9M17.8 8.8l1.5 1"/></svg></div>
+            <div class="cat-name">Home Care</div>
+            <div class="cat-sub">Fabric Solutions, Home Cleaners, Culinary</div>
+          </div>
+          <div class="cat-item">
+            <div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="url(#ig)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9.5" r="1.5"/><circle cx="12" cy="7.8" r="1.5"/><circle cx="16" cy="9.5" r="1.5"/><path d="M12 20.5c-2.8 0-4.8-1.9-4.8-4.3S9.4 11.5 12 11.5s4.8 2.3 4.8 4.7-2 4.3-4.8 4.3z"/></svg></div>
+            <div class="cat-name">Pet Food</div>
+          </div>
         </div>
       </div>
     </div>
@@ -468,31 +506,44 @@
   <div class="wrap">
     <div class="eyebrow reveal">My career journey</div>
     <h2 class="section-title reveal">Every role taught me something that lasts.</h2>
-    <div class="timeline reveal" style="margin-top:34px;">
-      <div class="t-item">
-        <div class="when">Jul 2017 – Mar 2020</div>
-        <div class="role">Management Trainee — Sales Function</div>
-        <div class="co">Coca-Cola Beverages Vietnam</div>
-        <div class="desc">"I learned to bring ideas to life on the shelf."</div>
+    <div class="journey-grid" style="margin-top:34px;">
+      <div class="timeline" id="timeline">
+        <div class="t-item">
+          <div class="when">Jul 2017 – Mar 2020</div>
+          <div class="role">Management Trainee — Sales Function</div>
+          <div class="co">Coca-Cola Beverages Vietnam</div>
+          <div class="desc">"I learned to bring ideas to life on the shelf."</div>
+        </div>
+        <div class="t-item">
+          <div class="when">Apr 2020 – Oct 2022</div>
+          <div class="role">Customer Planning Assistant Manager</div>
+          <div class="co">Unilever Vietnam</div>
+          <div class="desc">"I launched into brand new categories and thrived."</div>
+        </div>
+        <div class="t-item">
+          <div class="when">Nov 2022 – Dec 2024</div>
+          <div class="role">Customer Development Manager — Modern Trade</div>
+          <div class="co">Mars Petcare</div>
+          <div class="desc">"I rebuilt the business on healthy growth."</div>
+        </div>
+        <div class="t-item">
+          <div class="when">Dec 2024 – Present</div>
+          <div class="role">Career break &amp; professional up-skilling</div>
+          <div class="co">Data analytics · E-commerce · Digital Marketing</div>
+          <div class="desc">"I turned the pause into a data &amp; e-commerce competitive edge."</div>
+        </div>
       </div>
-      <div class="t-item">
-        <div class="when">Apr 2020 – Oct 2022</div>
-        <div class="role">Customer Planning Assistant Manager</div>
-        <div class="co">Unilever Vietnam</div>
-        <div class="desc">"I launched into brand new categories and thrived."</div>
-      </div>
-      <div class="t-item">
-        <div class="when">Nov 2022 – Dec 2024</div>
-        <div class="role">Customer Development Manager — Modern Trade</div>
-        <div class="co">Mars Petcare</div>
-        <div class="desc">"I rebuilt the business on healthy growth."</div>
-      </div>
-      <div class="t-item">
-        <div class="when">Dec 2024 – Present</div>
-        <div class="role">Career break &amp; professional up-skilling</div>
-        <div class="co">Data analytics · E-commerce · Digital Marketing</div>
-        <div class="desc">"I turned the pause into a data &amp; e-commerce competitive edge."</div>
-      </div>
+      <aside class="journey-panel reveal">
+        <div class="jp-eyebrow">At a glance</div>
+        <div class="jp-num">8 yrs</div>
+        <div class="jp-cap">of commercial experience across three FMCG leaders — building key accounts, channels and categories.</div>
+        <div class="jp-chips">
+          <span class="jp-chip">Coca-Cola</span>
+          <span class="jp-chip">Unilever</span>
+          <span class="jp-chip">Mars Petcare</span>
+        </div>
+        <div class="jp-foot">One comeback — sharper, and better than before.</div>
+      </aside>
     </div>
   </div>
 </section>
@@ -676,6 +727,15 @@
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // staggered timeline reveal (one experience after another)
+  const tl = document.getElementById('timeline');
+  if (tl) {
+    const tio = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { tl.classList.add('play'); tio.unobserve(tl); } });
+    }, { threshold: 0.2 });
+    tio.observe(tl);
+  }
 
   // envelope: opens automatically the first time it scrolls into view,
   // and can be tapped/clicked to open or close again afterwards
