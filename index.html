@@ -239,6 +239,7 @@
   .hl-img { position: relative; border-radius: 13px; }
   .hl-img::before { content: ""; position: absolute; inset: 12px; border-radius: 13px; background: var(--grad); filter: blur(24px); opacity: .5; z-index: 0; transition: opacity .4s ease; }
   .hl-img img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: 13px; box-shadow: 0 8px 22px rgba(2,6,23,.16); }
+  .hl-list .hl-item:nth-child(-n+3) .hl-img img { aspect-ratio: 760 / 422; height: auto; object-fit: cover; }
   .hl-item:hover { box-shadow: 0 18px 40px rgba(79,70,229,.18); }
   .hl-item:hover .hl-img::before { opacity: .92; }
   .hl-txt { display: flex; gap: 12px; align-items: flex-start; }
