@@ -209,6 +209,15 @@
   .journey-panel .jp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
   .journey-panel .jp-chip { background: #fff; border: 1px solid #d8d5f0; border-radius: 999px; padding: 6px 13px; font-size: 12.5px; font-weight: 600; color: var(--accent-deep); }
   .journey-panel .jp-foot { margin-top: 20px; padding-top: 16px; border-top: 1px dashed #cdc9ec; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 17px; color: var(--ink); }
+  /* career ladder */
+  .ladder-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
+  .ladder-scroll > svg { width: 100%; min-width: 900px; height: auto; display: block; overflow: visible; }
+  .ladder .lstep { opacity: 0; transform: translateY(14px); transform-box: fill-box; transition: opacity .55s ease, transform .55s ease; }
+  .ladder .lstep.show { opacity: 1; transform: none; }
+  #l-area { opacity: 0; transition: opacity 1s ease; }
+  .ladder.play #l-area { opacity: .12; }
+  #l-break { opacity: 0; transition: opacity .7s ease; }
+  #l-break.show { opacity: 1; }
 
   /* TIMELINE */
   .timeline { position: relative; margin-top: 20px; }
@@ -505,45 +514,84 @@
 <section id="journey">
   <div class="wrap">
     <div class="eyebrow reveal">My career journey</div>
-    <h2 class="section-title reveal">Every role taught me something that lasts.</h2>
-    <div class="journey-grid" style="margin-top:34px;">
-      <div class="timeline" id="timeline">
-        <div class="t-item">
-          <div class="when">Jul 2017 – Mar 2020</div>
-          <div class="role">Management Trainee — Sales Function</div>
-          <div class="co">Coca-Cola Beverages Vietnam</div>
-          <div class="desc">"I learned to bring ideas to life on the shelf."</div>
-        </div>
-        <div class="t-item">
-          <div class="when">Apr 2020 – Oct 2022</div>
-          <div class="role">Customer Planning Assistant Manager</div>
-          <div class="co">Unilever Vietnam</div>
-          <div class="desc">"I launched into brand new categories and thrived."</div>
-        </div>
-        <div class="t-item">
-          <div class="when">Nov 2022 – Dec 2024</div>
-          <div class="role">Customer Development Manager — Modern Trade</div>
-          <div class="co">Mars Petcare</div>
-          <div class="desc">"I rebuilt the business on healthy growth."</div>
-        </div>
-        <div class="t-item">
-          <div class="when">Dec 2024 – Present</div>
-          <div class="role">Career break &amp; professional up-skilling</div>
-          <div class="co">Data analytics · E-commerce · Digital Marketing</div>
-          <div class="desc">"I turned the pause into a data &amp; e-commerce competitive edge."</div>
-        </div>
-      </div>
-      <aside class="journey-panel reveal">
-        <div class="jp-eyebrow">At a glance</div>
-        <div class="jp-num">8 yrs</div>
-        <div class="jp-cap">of commercial experience across three FMCG leaders — building key accounts, channels and categories.</div>
-        <div class="jp-chips">
-          <span class="jp-chip">Coca-Cola</span>
-          <span class="jp-chip">Unilever</span>
-          <span class="jp-chip">Mars Petcare</span>
-        </div>
-        <div class="jp-foot">One comeback — sharper, and better than before.</div>
-      </aside>
+    <h2 class="section-title reveal">Every role, a step up.</h2>
+    <p class="lead reveal" style="margin-top:6px;">Every role taught me something that lasts.</p>
+    <div class="ladder-scroll reveal" style="margin-top:26px;">
+      <svg id="ladder" class="ladder" viewBox="0 0 1080 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Career staircase from 2017 to present, peaking at Mars Petcare, with a level career break for up-skilling.">
+        <defs>
+          <linearGradient id="gg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#9333EA"/></linearGradient>
+          <linearGradient id="larea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c5af0"/><stop offset="1" stop-color="#7c5af0" stop-opacity="0"/></linearGradient>
+        </defs>
+        <polygon id="l-area" points="84,520 276,520 276,430 540,430 540,300 996,300 996,560 84,560" fill="url(#larea)"/>
+        <line x1="40" y1="560" x2="1040" y2="560" stroke="#e6e8ec" stroke-width="2"/>
+        <g stroke="#e6e8ec" stroke-width="1" stroke-dasharray="3 5">
+          <line x1="144" y1="520" x2="144" y2="560"/><line x1="408" y1="430" x2="408" y2="560"/><line x1="672" y1="300" x2="672" y2="560"/><line x1="936" y1="300" x2="936" y2="560"/>
+        </g>
+        <path id="l-stair" d="M84,520 L276,520 L276,430 L540,430 L540,300 L672,300" fill="none" stroke="url(#gg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="l-break" d="M672,300 L996,300" fill="none" stroke="#9333ea" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 8"/>
+
+        <g class="lstep">
+          <rect x="20" y="334" width="248" height="172" rx="16" fill="#fff" stroke="#e6e8ec"/>
+          <text x="38" y="360" font-family="Inter" font-size="11.5" font-weight="700" fill="#2563EB">Jul 2017 – Mar 2020</text>
+          <text x="38" y="382" font-family="Fraunces" font-size="16.5" font-weight="600" fill="#1b1c1f">Management Trainee</text>
+          <text x="38" y="401" font-family="Inter" font-size="12" font-weight="600" fill="#6b7280">Coca-Cola Beverages Vietnam</text>
+          <text x="38" y="427" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">"I learned to bring ideas to</text>
+          <text x="38" y="444" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">life on the shelf."</text>
+          <text x="38" y="470" font-family="Inter" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#9ca3af">MASTER SKILLS</text>
+          <text x="38" y="486" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Route-to-Market · Modern &amp;</text>
+          <text x="38" y="499" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">General Trade · NPD</text>
+          <line x1="144" y1="506" x2="144" y2="513" stroke="#d8d5f0" stroke-width="1.4"/>
+          <circle cx="144" cy="520" r="7" fill="#fff" stroke="url(#gg)" stroke-width="2.5"/><circle cx="144" cy="520" r="3" fill="url(#gg)"/>
+        </g>
+
+        <g class="lstep">
+          <rect x="284" y="244" width="248" height="172" rx="16" fill="#fff" stroke="#e6e8ec"/>
+          <text x="302" y="270" font-family="Inter" font-size="11.5" font-weight="700" fill="#4F46E5">Apr 2020 – Oct 2022</text>
+          <text x="302" y="292" font-family="Fraunces" font-size="16.5" font-weight="600" fill="#1b1c1f">Customer Planning Manager</text>
+          <text x="302" y="311" font-family="Inter" font-size="12" font-weight="600" fill="#6b7280">Unilever Vietnam</text>
+          <text x="302" y="337" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">"I launched into brand new</text>
+          <text x="302" y="354" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">categories and thrived."</text>
+          <text x="302" y="380" font-family="Inter" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#9ca3af">MASTER SKILLS</text>
+          <text x="302" y="396" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Joint Business Planning ·</text>
+          <text x="302" y="409" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Channel Planning · In-store Exec</text>
+          <line x1="408" y1="416" x2="408" y2="423" stroke="#d8d5f0" stroke-width="1.4"/>
+          <circle cx="408" cy="430" r="7" fill="#fff" stroke="url(#gg)" stroke-width="2.5"/><circle cx="408" cy="430" r="3" fill="url(#gg)"/>
+        </g>
+
+        <g class="lstep">
+          <rect x="548" y="114" width="248" height="172" rx="16" fill="#fff" stroke="#c9bff2" stroke-width="1.4"/>
+          <text x="566" y="140" font-family="Inter" font-size="11.5" font-weight="700" fill="#6D28D9">Nov 2022 – Dec 2024</text>
+          <text x="566" y="162" font-family="Fraunces" font-size="16.5" font-weight="600" fill="#1b1c1f">Customer Development Mgr</text>
+          <text x="566" y="181" font-family="Inter" font-size="12" font-weight="600" fill="#6b7280">Mars Petcare · Modern Trade</text>
+          <text x="566" y="207" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">"I rebuilt the business on</text>
+          <text x="566" y="224" font-family="Fraunces" font-size="13.5" font-style="italic" font-weight="600" fill="#353b45">healthy growth."</text>
+          <text x="566" y="250" font-family="Inter" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#9ca3af">MASTER SKILLS</text>
+          <text x="566" y="266" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Modern Trade Leadership ·</text>
+          <text x="566" y="279" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Trade Investment · Share of Shelf</text>
+          <g transform="translate(776,134)"><path d="M0,7 L2,2 L7,0 L2,-2 L0,-7 L-2,-2 L-7,0 L-2,2 Z" fill="url(#gg)"/></g>
+          <line x1="672" y1="286" x2="672" y2="291" stroke="#c9bff2" stroke-width="1.4"/>
+          <circle cx="672" cy="300" r="9" fill="#fff" stroke="url(#gg)" stroke-width="3"/><circle cx="672" cy="300" r="3.6" fill="url(#gg)"/>
+        </g>
+
+        <g class="lstep">
+          <rect x="812" y="114" width="248" height="172" rx="16" fill="#f6f4ff" stroke="#ddd8f5"/>
+          <text x="830" y="140" font-family="Inter" font-size="11.5" font-weight="700" fill="#7C3AED">Dec 2024 – Present</text>
+          <text x="830" y="162" font-family="Fraunces" font-size="16.5" font-weight="600" fill="#1b1c1f">Career break &amp; up-skilling</text>
+          <text x="830" y="181" font-family="Inter" font-size="12" font-weight="600" fill="#6b7280">Data · E-commerce · Digital</text>
+          <text x="830" y="207" font-family="Fraunces" font-size="13" font-style="italic" font-weight="600" fill="#353b45">"I turned the pause into a data</text>
+          <text x="830" y="224" font-family="Fraunces" font-size="13" font-style="italic" font-weight="600" fill="#353b45">&amp; e-commerce competitive edge."</text>
+          <text x="830" y="250" font-family="Inter" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#9ca3af">MASTER SKILLS</text>
+          <text x="830" y="266" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Power BI · E-commerce ·</text>
+          <text x="830" y="279" font-family="Inter" font-size="11" font-weight="600" fill="#4338ca">Digital Marketing · AI Tools</text>
+          <line x1="936" y1="286" x2="936" y2="292" stroke="#ddd8f5" stroke-width="1.4"/>
+          <circle cx="936" cy="300" r="8" fill="#f6f4ff" stroke="#9333ea" stroke-width="2.2"/>
+          <path d="M933.6,297 v6 M938.4,297 v6" stroke="#9333ea" stroke-width="1.7" stroke-linecap="round"/>
+        </g>
+
+        <g font-family="Inter" font-size="11.5" font-weight="700" fill="#9ca3af" text-anchor="middle">
+          <text x="144" y="585">2017</text><text x="408" y="585">2020</text><text x="672" y="585">2022</text><text x="936" y="585">2024</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
@@ -735,6 +783,27 @@
       es.forEach(e => { if (e.isIntersecting) { tl.classList.add('play'); tio.unobserve(tl); } });
     }, { threshold: 0.2 });
     tio.observe(tl);
+  }
+
+  // career ladder: draw the line + pop steps in one by one on scroll
+  const lad = document.getElementById('ladder');
+  if (lad) {
+    const lio = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        lad.classList.add('play');
+        const sp = document.getElementById('l-stair');
+        const L = sp.getTotalLength();
+        sp.style.strokeDasharray = L; sp.style.strokeDashoffset = L; sp.getBoundingClientRect();
+        sp.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(.5,.1,.2,1)';
+        sp.style.strokeDashoffset = '0';
+        lad.querySelectorAll('.lstep').forEach((s, i) => setTimeout(() => s.classList.add('show'), 450 + i * 600));
+        const b = document.getElementById('l-break');
+        setTimeout(() => { if (b) b.classList.add('show'); }, 2500);
+        lio.disconnect();
+      });
+    }, { threshold: 0.25 });
+    lio.observe(lad);
   }
 
   // envelope: opens automatically the first time it scrolls into view,
