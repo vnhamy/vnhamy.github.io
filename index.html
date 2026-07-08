@@ -238,7 +238,9 @@
   .hl-item { display: flex; flex-direction: column; gap: 15px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 15px; box-shadow: var(--shadow); transition: box-shadow .35s ease; }
   .hl-img { position: relative; border-radius: 13px; }
   .hl-img::before { content: ""; position: absolute; inset: 12px; border-radius: 13px; background: var(--grad); filter: blur(24px); opacity: .5; z-index: 0; transition: opacity .4s ease; }
-  .hl-img img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: 13px; box-shadow: 0 8px 22px rgba(2,6,23,.16); }
+  .hl-clip { position: relative; z-index: 1; border-radius: 13px; overflow: hidden; box-shadow: 0 8px 22px rgba(2,6,23,.16); }
+  .hl-img img { display: block; width: 100%; height: auto; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+  .hl-clip:hover img { transform: scale(1.07); }
   .hl-list .hl-item:nth-child(-n+3) .hl-img img { aspect-ratio: 760 / 422; height: auto; object-fit: cover; }
   .hl-item:hover { box-shadow: 0 18px 40px rgba(79,70,229,.18); }
   .hl-item:hover .hl-img::before { opacity: .92; }
@@ -302,8 +304,23 @@
   .kd-list li::before { content: ""; position: absolute; left: 0; top: 1px; width: 16px; height: 16px; border-radius: 5px; background: var(--grad-2); box-shadow: 0 2px 6px rgba(79,70,229,.28); }
   .kd-list li::after { content: ""; position: absolute; left: 5px; top: 4px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
   .rp-gallery { column-count: 4; column-gap: 14px; margin-top: 12px; }
-  .rp-gallery img { width: 100%; margin: 0 0 14px; border-radius: 12px; display: block; box-shadow: 0 8px 20px rgba(2,6,23,.14); break-inside: avoid; transition: transform .35s ease, box-shadow .35s ease; }
-  .rp-gallery img:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 16px 34px rgba(79,70,229,.20); }
+  .rp-gallery .rp-clip { position: relative; width: 100%; margin: 0 0 14px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(2,6,23,.14); break-inside: avoid; }
+  .rp-gallery .rp-clip img { width: 100%; display: block; border-radius: 12px; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+  .rp-gallery .rp-clip:hover img { transform: scale(1.07); }
+  .tiltable { transition: transform .2s ease; transform-style: preserve-3d; }
+  .sheen { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; border-radius: inherit; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.30) 50%, transparent 60%); transition: opacity .25s ease; }
+  .tiltable:hover .sheen { opacity: 1; }
+  img.zoomable { cursor: zoom-in; }
+  #lb-overlay { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; background: rgba(15,10,40,.9); }
+  #lb-overlay.open { display: flex; }
+  #lb-overlay img { max-width: 90%; max-height: 86%; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,.55); animation: lbin .3s ease; }
+  @keyframes lbin { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+  .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border: none; border-radius: 50%; background: rgba(255,255,255,.15); color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .lb-nav:hover { background: rgba(255,255,255,.32); }
+  #lb-prev { left: 20px; } #lb-next { right: 20px; }
+  #lb-close { position: absolute; top: 20px; right: 24px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(255,255,255,.15); color: #fff; font-size: 22px; cursor: pointer; }
+  #lb-close:hover { background: rgba(255,255,255,.32); }
+  .lb-count { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,.8); font-size: 13px; letter-spacing: .05em; }
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
@@ -639,12 +656,12 @@
     <h2 class="section-title reveal">More than a promotion.</h2>
     <p class="lead reveal" style="margin-top:14px;">Working hand-in-hand with Marketing, Trade Marketing, regional teams and customers, I turned briefs into moments shoppers remember - extending visibility across aisles and creating reasons to shop more. A discount only moves a week of volume; these moved brands and loyalty that lasted.</p>
     <div class="hl-list" style="margin-top:28px;">
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl1.jpg" alt="Coke Arctic project - 7-Eleven x Coca-Cola" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola - Coke Arctic project</p></div></div>
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl2.jpg" alt="Energy drinks activation across CVS" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div></div>
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl3.jpg" alt="Mèo Nổ boardgame gift by Coca-Cola" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Exclusive gift - Mèo Nổ boardgame by Coca-Cola</p></div></div>
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl4.jpg" alt="Simple skincare NPD launch in Watsons" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div></div>
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl5.jpg" alt="3-category collaboration in Circle K" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div></div>
-      <div class="hl-item reveal"><div class="hl-img"><img src="hl6.jpg" alt="Thematic ice cream events in CVS" loading="lazy"></div><div class="hl-txt"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl1.jpg" alt="Coke Arctic project - 7-Eleven x Coca-Cola" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Global partnership between 7-Eleven &amp; Coca-Cola - Coke Arctic project</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl2.jpg" alt="Energy drinks activation across CVS" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Activation for energy drinks across CVS as flagship channel</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl3.jpg" alt="Mèo Nổ boardgame gift by Coca-Cola" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Exclusive gift - Mèo Nổ boardgame by Coca-Cola</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl4.jpg" alt="Simple skincare NPD launch in Watsons" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl5.jpg" alt="3-category collaboration in Circle K" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div></div>
+      <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl6.jpg" alt="Thematic ice cream events in CVS" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div></div>
     </div>
   </div>
 </section>
@@ -774,14 +791,14 @@
 
       <h5 style="margin-top:30px;">Real performance highlights</h5>
       <div class="rp-gallery">
-        <img src="rp1.jpg" alt="Mars Petcare shelf display in Modern Trade" loading="lazy">
-        <img src="rp2.jpg" alt="Pet care aisle activation" loading="lazy">
-        <img src="rp3.jpg" alt="Planogram and share of shelf execution" loading="lazy">
-        <img src="rp4.jpg" alt="Whiskas seasonal display" loading="lazy">
-        <img src="rp5.jpg" alt="Pedigree secondary display" loading="lazy">
-        <img src="rp7.jpg" alt="Mars Petcare activation event" loading="lazy">
-        <img src="rp6.jpg" alt="In-store category visibility" loading="lazy">
-        <img src="rp8.jpg" alt="Whiskas sampling and advisor activation" loading="lazy">
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp1.jpg" alt="Mars Petcare shelf display in Modern Trade" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp2.jpg" alt="Pet care aisle activation" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp3.jpg" alt="Planogram and share of shelf execution" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp4.jpg" alt="Whiskas seasonal display" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp5.jpg" alt="Pedigree secondary display" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp7.jpg" alt="Mars Petcare activation event" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp6.jpg" alt="In-store category visibility" loading="lazy"><span class="sheen"></span></div>
+        <div class="rp-clip tiltable"><img class="zoomable" src="rp8.jpg" alt="Whiskas sampling and advisor activation" loading="lazy"><span class="sheen"></span></div>
       </div>
 
       <div class="footnote">*Mars Petcare brands: Pedigree · Whiskas · Kitekat.</div>
@@ -844,6 +861,14 @@
 <footer>
   © <span id="yr"></span> Vo Nguyen Ha My · Built to last.
 </footer>
+
+<div id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lb-close" aria-label="Close">&#10005;</button>
+  <button class="lb-nav" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img id="lb-img" alt="">
+  <button class="lb-nav" id="lb-next" aria-label="Next">&#8250;</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
 
 <script>
   // mobile nav
@@ -921,6 +946,59 @@
       setTimeout(cycle, 2600);
     }
     setTimeout(cycle, 2200);
+  })();
+  // ---- image effects: 3D tilt + sheen ----
+  document.querySelectorAll('.tiltable').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5;
+      const py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = 'perspective(700px) rotateY(' + (px*8).toFixed(2) + 'deg) rotateX(' + (-py*8).toFixed(2) + 'deg)';
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // ---- lightbox (browse full-screen with prev/next) ----
+  (function () {
+    const imgs = Array.from(document.querySelectorAll('img.zoomable'));
+    const overlay = document.getElementById('lb-overlay');
+    if (!imgs.length || !overlay) return;
+    const lbImg = document.getElementById('lb-img');
+    const cnt = document.getElementById('lb-count');
+    let idx = 0;
+    function show(i) { idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].currentSrc || imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; cnt.textContent = (idx + 1) + ' / ' + imgs.length; }
+    function open(i) { show(i); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    imgs.forEach((im, i) => im.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+    document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  })();
+
+  // ---- count-up on the result stats (Unilever) ----
+  (function () {
+    const nums = document.querySelectorAll('.results .r-num');
+    if (!nums.length) return;
+    const cio = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, m = el.textContent.trim().match(/^([^\d]*)(\d+)(.*)$/);
+        if (m) {
+          const pre = m[1], target = +m[2], suf = m[3];
+          let start = null;
+          (function step(t) { if (!start) start = t; const p = Math.min((t - start) / 1100, 1); el.textContent = pre + Math.round(target * p) + suf; if (p < 1) requestAnimationFrame(step); })(performance.now());
+        }
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(n => cio.observe(n));
   })();
 </script>
 </body>
