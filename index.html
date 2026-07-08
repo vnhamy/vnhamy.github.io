@@ -295,6 +295,13 @@
   footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
   /* reveal animation */
+  .mwb-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin: 6px 0 4px; }
+  .mwb-card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 15px; padding: 18px 17px; box-shadow: var(--shadow); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease; }
+  .mwb-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--grad-2); }
+  .mwb-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(79,70,229,.16); }
+  .mwb-n { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: 24px; line-height: 1; background: var(--grad-2); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 9px; }
+  .mwb-t { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 15.5px; color: #1b1c1f; line-height: 1.25; margin-bottom: 8px; }
+  .mwb-card p { margin: 0; font-size: 12.5px; color: var(--ink-soft); font-weight: 500; line-height: 1.5; }
   .kd-goal { display: inline-block; margin: 8px 0 20px; padding: 9px 18px; border-radius: 999px; background: var(--grad-2); color: #fff; font-family: "Inter"; font-weight: 700; font-size: 13.5px; letter-spacing: .01em; box-shadow: 0 8px 20px rgba(79,70,229,.26); }
   .kd-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
   .kd-col { background: #fff; border: 1px solid var(--line); border-radius: 15px; padding: 17px 17px 8px; box-shadow: var(--shadow); }
@@ -333,6 +340,7 @@
     .stats { grid-template-columns: repeat(2,1fr); }
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
     .kd-grid { grid-template-columns: 1fr 1fr; }
+    .mwb-grid { grid-template-columns: 1fr 1fr; }
     .rp-gallery { column-count: 2; }
     .cat-grid { grid-template-columns: 1fr 1fr; }
     .journey-grid { grid-template-columns: 1fr; }
@@ -725,18 +733,21 @@
         </div>
       </div>
       <p class="lead" style="margin-bottom:24px;">Rather than fight a losing battle to cut trade terms, I re-engineered them and invested for future growth - making every dollar work.</p>
-      <div class="case-cols">
+      <h5>Must-win battles</h5>
+      <div class="mwb-grid">
+        <div class="mwb-card"><div class="mwb-n">01</div><div class="mwb-t">Convert volume into value</div><p>Wean the business off unhealthy high-volume sales and rebuild revenue on genuine, organic off-take in the long-term.</p></div>
+        <div class="mwb-card"><div class="mwb-n">02</div><div class="mwb-t">Make every dollar work</div><p>Rather than fight a losing battle to cut trade terms and fight with customers, re-engineer them and invest for future growth.</p></div>
+        <div class="mwb-card"><div class="mwb-n">03</div><div class="mwb-t">Own Modern Trade leadership</div><p>Win in Share of Shelf &gt;55% and Assortment Share &gt;60% to establish leadership and be the fastest on the market.</p></div>
+        <div class="mwb-card"><div class="mwb-n">04</div><div class="mwb-t">Protect the core, build the future</div><p>Secure the core base by investing in the right places with the right activities, while reducing dependence on it through new initiatives.</p></div>
+      </div>
+
+      <div class="case-cols" style="margin-top:28px;">
         <div>
           <h5>Situation</h5>
           <ul>
             <li>An unhealthy revenue mix - most sales came from high-volume selling that flattered the short term but constantly conflicted with General Trade.</li>
             <li>Budget trapped in deep discounts, with trading-term clauses that favored customers and were near-impossible to renegotiate down.</li>
             <li>A narrow portfolio fighting itself - just 3 segments, so everyone chased the best deals on core SKUs, fueling channel conflict.</li>
-          </ul>
-          <h5 style="margin-top:8px;">Must-win battles</h5>
-          <ul>
-            <li><strong>Convert volume into value</strong> - wean the business off unhealthy high-volume sales; rebuild revenue on genuine, organic off-take.</li>
-            <li><strong>Own Modern Trade leadership</strong> - Share of Shelf &gt;55% and Assortment Share &gt;60% to lead and be the fastest on the market.</li>
           </ul>
         </div>
         <div>
