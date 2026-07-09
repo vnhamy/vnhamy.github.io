@@ -314,6 +314,19 @@
   .rp-gallery .rp-clip { position: relative; width: 100%; margin: 0 0 14px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(2,6,23,.14); break-inside: avoid; }
   .rp-gallery .rp-clip img { width: 100%; display: block; border-radius: 12px; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
   .rp-gallery .rp-clip:hover img { transform: scale(1.07); }
+  .dash { margin-top: 30px; }
+  .dash-toggle { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+  .dt-btn { display: inline-flex; align-items: center; gap: 8px; font-family: "Inter"; font-weight: 700; font-size: 13.5px; color: #6b7280; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 9px 18px; cursor: pointer; transition: background .3s ease, color .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .dt-btn .dt-n { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: 14px; color: #c9c6d6; transition: color .3s ease; }
+  .dt-btn:hover { border-color: #cdbef5; }
+  .dt-btn.active { background: var(--grad-2); color: #fff; border-color: transparent; box-shadow: 0 8px 20px rgba(79,70,229,.26); }
+  .dt-btn.active .dt-n { color: rgba(255,255,255,.85); }
+  .dt-arrow { color: #b9b4d6; font-size: 18px; }
+  .dash-stage { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 18px 46px rgba(2,6,23,.16); border: 1px solid var(--line); background: #fff; height: 300px; transition: height .6s cubic-bezier(.4,.1,.2,1); }
+  .dash-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.03); transition: opacity .55s ease, transform .55s ease; pointer-events: none; }
+  .dash-slide.active { opacity: 1; transform: none; }
+  .dash-slide img { display: block; width: 100%; height: auto; }
+  .dash-cap { margin-top: 16px; font-size: 14px; color: var(--ink-soft); font-weight: 500; max-width: 770px; transition: opacity .3s ease; }
   .tiltable { transition: transform .2s ease; transform-style: preserve-3d; }
   .sheen { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; border-radius: inherit; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.30) 50%, transparent 60%); transition: opacity .25s ease; }
   .tiltable:hover .sheen { opacity: 1; }
@@ -365,6 +378,7 @@
       <a href="#skills">Expertise</a>
       <a href="#journey">Journey</a>
       <a href="#work">Highlights</a>
+      <a href="#data">Data</a>
       <a href="#references">References</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
@@ -670,6 +684,28 @@
       <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl4.jpg" alt="Simple skincare NPD launch in Watsons" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Successful NPD launch of Simple skincare in Watsons</p></div></div>
       <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl5.jpg" alt="3-category collaboration in Circle K" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Major joint collaboration of 3 categories in Circle K</p></div></div>
       <div class="hl-item reveal"><div class="hl-img"><div class="hl-clip tiltable"><img class="zoomable" src="hl6.jpg" alt="Thematic ice cream events in CVS" loading="lazy"><span class="sheen"></span></div></div><div class="hl-txt"><span class="mk">◆</span><p>Thematic ice cream events in CVS as flagship channel</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA & DASHBOARDS ============ -->
+<section class="alt" id="data">
+  <div class="wrap">
+    <div class="eyebrow reveal">Data &amp; dashboards</div>
+    <h2 class="section-title reveal">Turning numbers into decisions.</h2>
+    <p class="lead reveal" style="margin-top:14px; max-width:770px;">Numbers only matter if people can act on them. I track performance obsessively - and I taught myself to turn manual spreadsheets into live, self-serve Power BI dashboards: offtake, distribution, share and forecast, read the same way by every stakeholder and refreshed automatically.</p>
+
+    <div class="dash reveal">
+      <div class="dash-toggle">
+        <button class="dt-btn active" data-view="simple"><span class="dt-n">01</span> Simple tracking</button>
+        <span class="dt-arrow">→</span>
+        <button class="dt-btn" data-view="complex"><span class="dt-n">02</span> Power BI dashboard</button>
+      </div>
+      <div class="dash-stage" id="dashStage">
+        <figure class="dash-slide active" data-view="simple"><img src="dash-simple.jpg" alt="Manual Excel performance tracking sheet - targets, achievement and LE by customer"></figure>
+        <figure class="dash-slide" data-view="complex"><img src="dash-complex.jpg" alt="Interactive Power BI Offtake Dashboard with filters, trends and SKU-level detail"></figure>
+      </div>
+      <p class="dash-cap" id="dashCap">Where I started - manual Excel tracking: targets, achievement and LE by customer, updated by hand.</p>
     </div>
   </div>
 </section>
@@ -991,6 +1027,39 @@
       else if (e.key === 'ArrowLeft') show(idx - 1);
       else if (e.key === 'ArrowRight') show(idx + 1);
     });
+  })();
+
+  // ---- data & dashboards: morph from simple tracking to Power BI ----
+  (function () {
+    const dash = document.querySelector('.dash');
+    if (!dash) return;
+    const stage = document.getElementById('dashStage');
+    const slides = dash.querySelectorAll('.dash-slide');
+    const btns = dash.querySelectorAll('.dt-btn');
+    const cap = document.getElementById('dashCap');
+    const caps = {
+      simple: "Where I started - manual Excel tracking: targets, achievement and LE by customer, updated by hand.",
+      complex: "Where I am now - an interactive Power BI Offtake Dashboard: filters, trends and SKU-level detail, auto-refreshed and decision-ready."
+    };
+    function sizeStage() {
+      const active = dash.querySelector('.dash-slide.active img');
+      if (!active || !active.naturalWidth) return;
+      stage.style.height = Math.round(stage.clientWidth * active.naturalHeight / active.naturalWidth) + 'px';
+    }
+    function setView(v) {
+      slides.forEach(s => s.classList.toggle('active', s.dataset.view === v));
+      btns.forEach(b => b.classList.toggle('active', b.dataset.view === v));
+      cap.style.opacity = 0;
+      setTimeout(() => { cap.textContent = caps[v]; cap.style.opacity = 1; }, 200);
+      requestAnimationFrame(sizeStage);
+    }
+    btns.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+    dash.querySelectorAll('img').forEach(im => { im.complete ? sizeStage() : im.addEventListener('load', sizeStage); });
+    window.addEventListener('resize', sizeStage);
+    const dio = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { setTimeout(() => setView('complex'), 1500); dio.disconnect(); } });
+    }, { threshold: 0.4 });
+    dio.observe(dash);
   })();
 
   // ---- count-up on the result stats (Unilever) ----
