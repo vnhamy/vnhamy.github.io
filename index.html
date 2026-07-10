@@ -314,6 +314,10 @@
   .rp-gallery .rp-clip { position: relative; width: 100%; margin: 0 0 14px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(2,6,23,.14); break-inside: avoid; }
   .rp-gallery .rp-clip img { width: 100%; display: block; border-radius: 12px; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
   .rp-gallery .rp-clip:hover img { transform: scale(1.07); }
+  .case-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 14px 0 6px; }
+  .cg-clip { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 26px rgba(2,6,23,.14); border: 1px solid var(--line); }
+  .cg-clip img { display: block; width: 100%; height: auto; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+  .cg-clip:hover img { transform: scale(1.05); }
   .dash { margin-top: 30px; }
   .dash-toggle { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
   .dt-btn { display: inline-flex; align-items: center; gap: 8px; font-family: "Inter"; font-weight: 700; font-size: 13.5px; color: #6b7280; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 9px 18px; cursor: pointer; transition: background .3s ease, color .3s ease, box-shadow .3s ease, border-color .3s ease; }
@@ -354,6 +358,7 @@
     .info-grid, .hl-list, .ref-grid { grid-template-columns: 1fr; }
     .kd-grid { grid-template-columns: 1fr 1fr; }
     .mwb-grid { grid-template-columns: 1fr 1fr; }
+    .case-gallery { grid-template-columns: 1fr; }
     .rp-gallery { column-count: 2; }
     .cat-grid { grid-template-columns: 1fr 1fr; }
     .journey-grid { grid-template-columns: 1fr; }
@@ -738,9 +743,9 @@
           <h5>Ideas &amp; execution</h5>
           <ul>
             <li><strong>Prioritize the base</strong> - rank customers by contribution; manage top accounts individually and cluster the long tail by shared traits - channel, format, shopper and geography.</li>
-            <li><strong>Define the core-of-the-core</strong> - build a tailored must-stock range for each account and cluster, driven by sales performance, shopper behaviour, demographics and geography.</li>
-            <li><strong>Align with buyers</strong> - agree the new assortment and a store-by-store deployment plan with each buyer.</li>
-            <li><strong>Execute with Operations</strong> - translate the agreed assortment-by-store into merchandising and availability actions with the field team.</li>
+            <li><strong>Define the core-of-the-core</strong> - build a tailored must-sell list for each account and customer, driven by sales performance, shopper behaviour, demographics and geography. Deep-diving into every store's size, format and cluster, I managed not one range per customer but up to 5 assortment lists per key account.</li>
+            <li><strong>Align with buyers</strong> - build the relationship and negotiate strategically to agree the new assortment and a store-by-store deployment plan with every stakeholder.</li>
+            <li><strong>Execute with Operations</strong> - translate the agreed assortment-by-store into merchandising, availability and visibility actions with the field team.</li>
             <li><strong>Review and refine</strong> - track core-range performance monthly, prune underperformers and upgrade the list.</li>
           </ul>
         </div>
@@ -748,11 +753,16 @@
       <h5 style="margin-top:8px;">Key deliveries</h5>
       <ul class="checks">
         <li>A prioritized customer plan - key accounts managed individually, the long tail grouped into look-alike clusters.</li>
-        <li>A data-built core assortment (must-stock list) for every account and cluster.</li>
+        <li>A data-built must-sell list for every account and customer - up to 5 tailored assortments per key account.</li>
         <li>Buyer-agreed listings translated into a store-by-store deployment plan.</li>
         <li>A clear assortment-by-store brief for Operations to drive merchandising, visibility and availability.</li>
-        <li>A monthly review cycle to keep the core range sharp and performing.</li>
+        <li>A monthly review cycle to keep the core range fit, sharp and performing.</li>
       </ul>
+      <h5 style="margin-top:8px;">Store profiling in practice</h5>
+      <div class="case-gallery">
+        <div class="cg-clip tiltable"><img class="zoomable" src="store1.jpg" alt="Perfect store execution - assortment, space share and off-location analysis" loading="lazy"><span class="sheen"></span></div>
+        <div class="cg-clip tiltable"><img class="zoomable" src="store2.jpg" alt="Store profile - snapshot, Unilever in the store and category contribution" loading="lazy"><span class="sheen"></span></div>
+      </div>
       <div class="results">
         <div class="result"><div class="r-num">&gt;85%</div><div class="r-lab">On-shelf availability</div></div>
         <div class="result"><div class="r-num">&gt;60%</div><div class="r-lab">Share of shelf (minimart)</div></div>
