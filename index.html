@@ -89,7 +89,9 @@
     border: 1px solid rgba(124,58,237,.25);
     padding: 6px 14px; border-radius: 999px; font-weight: 700;
     font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    animation: badgePulse 2.1s ease-in-out infinite;
   }
+  @keyframes badgePulse { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,.5); } 70% { box-shadow: 0 0 0 14px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
   .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(37,99,235,.18); }
   .hero-grid { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; margin-top: 26px; }
   .hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1.0; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
