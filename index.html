@@ -89,12 +89,14 @@
     border: 1px solid rgba(124,58,237,.25);
     padding: 6px 14px; border-radius: 999px; font-weight: 700;
     font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-    animation: badgePulse 2.1s ease-in-out infinite;
+    animation: badgePulse 1.7s ease-out infinite;
   }
-  @keyframes badgePulse { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,.5); } 70% { box-shadow: 0 0 0 14px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
+  @keyframes badgePulse { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,.85), 0 0 0 0 rgba(124,58,237,.45); } 65% { box-shadow: 0 0 0 16px rgba(124,58,237,0), 0 0 0 28px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0), 0 0 0 0 rgba(124,58,237,0); } }
   .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(37,99,235,.18); }
   .hero-grid { display: grid; grid-template-columns: minmax(420px, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; margin-top: 26px; }
-  .hero h1 { font-size: clamp(40px, 6.4vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1.0; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 { position: relative; isolation: isolate; font-size: clamp(40px, 6.4vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1.0; background: linear-gradient(180deg, #2563EB 0%, #6D28D9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1::before { content: ""; position: absolute; z-index: -1; left: -9%; top: -16%; width: 118%; height: 132%; background: radial-gradient(58% 60% at 38% 44%, rgba(124,58,237,.34), rgba(37,99,235,.20) 46%, transparent 72%); filter: blur(36px); animation: nameGlow 4.5s ease-in-out infinite; pointer-events: none; }
+  @keyframes nameGlow { 0%, 100% { opacity: .55; transform: scale(.97); } 50% { opacity: 1; transform: scale(1.04); } }
   .hero h1 .nm-a, .hero h1 .nm-b { display: block; }
   .hero h1 .nm-b { font-size: 1.7em; line-height: .98; margin-top: 4px; }
   .hero .name-sub { font-family: "Inter"; font-weight: 600; font-size: 18px; color: var(--muted); margin-top: 6px; }
