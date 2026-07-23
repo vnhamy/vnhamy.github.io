@@ -332,11 +332,12 @@
   .cert-item { margin: 0; }
   .cert-cap { margin-top: 11px; font-size: 12.5px; font-weight: 600; color: var(--muted); text-align: center; letter-spacing: .01em; }
   .certs-stage-wrap { width: 100%; overflow: hidden; margin-top: 26px; }
-  .certs-stage { position: relative; width: 640px; height: 450px; margin: 0 auto; transform-origin: top center; }
-  .cbag { position: absolute; left: 50%; bottom: 24px; width: 216px; transform: translateX(-50%) scale(.92); transition: transform .55s cubic-bezier(.3,1.3,.5,1); z-index: 5; filter: drop-shadow(0 14px 18px rgba(2,6,23,.28)); }
-  .cbag-glow { position: absolute; left: 50%; bottom: 150px; width: 230px; height: 84px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(124,58,237,.45), transparent); filter: blur(10px); opacity: 0; transition: opacity .5s ease; }
-  .certs-stage .c3 { position: absolute; width: 138px; opacity: 0; transform: scale(.3); z-index: 3; cursor: zoom-in; transition: left .9s cubic-bezier(.2,.85,.25,1), top .9s cubic-bezier(.2,.85,.25,1), transform .9s cubic-bezier(.2,.85,.25,1), opacity .5s ease; }
-  .certs-stage .c3 img { display: block; width: 100%; height: 96px; object-fit: cover; border-radius: 11px; border: 3px solid #fff; box-shadow: 0 14px 30px rgba(2,6,23,.22); transform: rotate(var(--r)); }
+  .certs-stage { position: relative; width: 1000px; height: 540px; margin: 0 auto; transform-origin: top center; }
+  .cbag { position: absolute; left: 50%; bottom: 24px; width: 232px; transform: translateX(-50%) scale(.92); transition: transform .55s cubic-bezier(.3,1.3,.5,1); z-index: 5; filter: drop-shadow(0 14px 18px rgba(2,6,23,.28)); }
+  .cbag-glow { position: absolute; left: 50%; bottom: 168px; width: 250px; height: 90px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(124,58,237,.45), transparent); filter: blur(10px); opacity: 0; transition: opacity .5s ease; }
+  .certs-stage .c3 { position: absolute; width: 210px; opacity: 0; transform: scale(.3); z-index: 3; cursor: zoom-in; transition: left .9s cubic-bezier(.2,.85,.25,1), top .9s cubic-bezier(.2,.85,.25,1), transform .9s cubic-bezier(.2,.85,.25,1), opacity .5s ease; }
+  .certs-stage .c3 img { display: block; width: 100%; height: 148px; object-fit: cover; border-radius: 12px; border: 4px solid #fff; box-shadow: 0 16px 34px rgba(2,6,23,.24); transform: rotate(var(--r)); }
+  .certs-stage .c3:hover { z-index: 6; }
   .certs-stage .c3.land { opacity: 1; transform: scale(1); }
   .certs-stage .c3.float img { animation: floaty var(--d) ease-in-out infinite; animation-delay: var(--dl); }
   @keyframes floaty { 0%, 100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(var(--r)) translateY(-9px); } }
@@ -619,12 +620,12 @@
       <div class="certs-stage" id="certsStage">
         <div class="cbag-glow" id="cbagGlow"></div>
         <img class="cbag" id="cbagImg" src="bag.png" alt="My bag of certifications">
-        <div class="c3" style="--r:-30deg;--d:3.6s;--dl:0s"  data-tx="90"  data-ty="262"><img class="zoomable" src="cert1.jpg" alt="Unilever Best Planner award, Q1 2022"></div>
-        <div class="c3" style="--r:-18deg;--d:4.2s;--dl:.5s" data-tx="150" data-ty="150"><img class="zoomable" src="cert2.jpg" alt="P&amp;G CEO Academy, 2015"></div>
-        <div class="c3" style="--r:-6deg;--d:3.9s;--dl:.2s"  data-tx="252" data-ty="86"><img class="zoomable" src="cert3.jpg" alt="E-commerce Masterclass, 2026"></div>
-        <div class="c3" style="--r:6deg;--d:4.1s;--dl:.7s"   data-tx="390" data-ty="86"><img class="zoomable" src="cert4.jpg" alt="Canva Academy Brand &amp; Content, 2026"></div>
-        <div class="c3" style="--r:18deg;--d:3.7s;--dl:.3s"  data-tx="492" data-ty="150"><img class="zoomable" src="cert5.jpg" alt="Canva Academy Site &amp; Sales Deck"></div>
-        <div class="c3" style="--r:30deg;--d:4.0s;--dl:.6s"  data-tx="552" data-ty="262"><img class="zoomable" src="cert6.jpg" alt="AI Video Channel, Meta Content, 2026"></div>
+        <div class="c3" style="--r:-13deg;--d:3.6s;--dl:0s"  data-tx="152" data-ty="196"><img class="zoomable" src="cert1.jpg" alt="Unilever Best Planner award, Q1 2022"></div>
+        <div class="c3" style="--r:9deg;--d:4.2s;--dl:.5s"   data-tx="356" data-ty="110"><img class="zoomable" src="cert2.jpg" alt="P&amp;G CEO Academy, 2015"></div>
+        <div class="c3" style="--r:-6deg;--d:3.9s;--dl:.2s"  data-tx="560" data-ty="166"><img class="zoomable" src="cert3.jpg" alt="E-commerce Masterclass, 2026"></div>
+        <div class="c3" style="--r:11deg;--d:4.1s;--dl:.7s"  data-tx="742" data-ty="112"><img class="zoomable" src="cert4.jpg" alt="Canva Academy Brand &amp; Content, 2026"></div>
+        <div class="c3" style="--r:-13deg;--d:3.7s;--dl:.3s" data-tx="884" data-ty="202"><img class="zoomable" src="cert5.jpg" alt="Canva Academy Site &amp; Sales Deck"></div>
+        <div class="c3" style="--r:8deg;--d:4.0s;--dl:.6s"   data-tx="252" data-ty="336"><img class="zoomable" src="cert6.jpg" alt="AI Video Channel, Meta Content, 2026"></div>
       </div>
     </div>
   </div>
@@ -1128,11 +1129,11 @@
     var bag = document.getElementById('cbagImg');
     var glow = document.getElementById('cbagGlow');
     var certs = [].slice.call(stage.querySelectorAll('.c3'));
-    var bx = 320, by = 300;
-    function fit() { var sc = Math.min(1, wrap.clientWidth / 640); stage.style.transform = 'scale(' + sc + ')'; wrap.style.height = (450 * sc) + 'px'; }
+    var bx = 500, by = 340;
+    function fit() { var sc = Math.min(1, wrap.clientWidth / 1000); stage.style.transform = 'scale(' + sc + ')'; wrap.style.height = (540 * sc) + 'px'; }
     fit(); window.addEventListener('resize', fit);
-    certs.forEach(function (c) { c.style.left = (bx - 69) + 'px'; c.style.top = (by - 48) + 'px'; });
-    function settle(c) { c.style.left = (parseFloat(c.dataset.tx) - 69) + 'px'; c.style.top = (parseFloat(c.dataset.ty) - 48) + 'px'; c.classList.add('land'); }
+    certs.forEach(function (c) { c.style.left = (bx - 105) + 'px'; c.style.top = (by - 74) + 'px'; });
+    function settle(c) { c.style.left = (parseFloat(c.dataset.tx) - 105) + 'px'; c.style.top = (parseFloat(c.dataset.ty) - 74) + 'px'; c.classList.add('land'); }
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) { bag.style.transform = 'translateX(-50%) scale(1)'; glow.style.opacity = '1'; certs.forEach(function (c) { settle(c); c.classList.add('float'); }); return; }
     function play() {
