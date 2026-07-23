@@ -331,6 +331,15 @@
   .cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 30px; }
   .cert-item { margin: 0; }
   .cert-cap { margin-top: 11px; font-size: 12.5px; font-weight: 600; color: var(--muted); text-align: center; letter-spacing: .01em; }
+  .certs-stage-wrap { width: 100%; overflow: hidden; margin-top: 26px; }
+  .certs-stage { position: relative; width: 640px; height: 450px; margin: 0 auto; transform-origin: top center; }
+  .cbag { position: absolute; left: 50%; bottom: 24px; width: 216px; transform: translateX(-50%) scale(.92); transition: transform .55s cubic-bezier(.3,1.3,.5,1); z-index: 5; filter: drop-shadow(0 14px 18px rgba(2,6,23,.28)); }
+  .cbag-glow { position: absolute; left: 50%; bottom: 150px; width: 230px; height: 84px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(124,58,237,.45), transparent); filter: blur(10px); opacity: 0; transition: opacity .5s ease; }
+  .certs-stage .c3 { position: absolute; width: 138px; opacity: 0; transform: scale(.3); z-index: 3; cursor: zoom-in; transition: left .9s cubic-bezier(.2,.85,.25,1), top .9s cubic-bezier(.2,.85,.25,1), transform .9s cubic-bezier(.2,.85,.25,1), opacity .5s ease; }
+  .certs-stage .c3 img { display: block; width: 100%; height: 96px; object-fit: cover; border-radius: 11px; border: 3px solid #fff; box-shadow: 0 14px 30px rgba(2,6,23,.22); transform: rotate(var(--r)); }
+  .certs-stage .c3.land { opacity: 1; transform: scale(1); }
+  .certs-stage .c3.float img { animation: floaty var(--d) ease-in-out infinite; animation-delay: var(--dl); }
+  @keyframes floaty { 0%, 100% { transform: rotate(var(--r)) translateY(0); } 50% { transform: rotate(var(--r)) translateY(-9px); } }
   .case-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 14px 0 6px; }
   .cg-clip { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 26px rgba(2,6,23,.14); border: 1px solid var(--line); }
   .cg-clip img { display: block; width: 100%; height: auto; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
@@ -606,13 +615,17 @@
     <div class="eyebrow reveal">Certifications</div>
     <h2 class="section-title reveal">Life is continuous learning and improvement.</h2>
     <p class="lead reveal" style="margin-top:14px; max-width:790px;">Recognition and up-skilling collected along the way, from FMCG performance awards to the data analysis, e-commerce and AI-content certifications I earned during my career break.</p>
-    <div class="cert-grid reveal">
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert1.jpg" alt="Unilever Best Employee - Best Planner award" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">Unilever · Best Planner · Q1 2022</figcaption></figure>
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert2.jpg" alt="P&amp;G CEO Academy completion certificate" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">P&amp;G CEO Academy · 2015</figcaption></figure>
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert3.jpg" alt="E-commerce Masterclass certificate" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">E-commerce Masterclass · 2026</figcaption></figure>
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert4.jpg" alt="Canva Academy - brand and content creation" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">Canva Academy · Brand &amp; Content · 2026</figcaption></figure>
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert5.jpg" alt="Canva Academy - site and sales deck design" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">Canva Academy · Site &amp; Sales Deck</figcaption></figure>
-      <figure class="cert-item"><div class="cg-clip tiltable"><img class="zoomable" src="cert6.jpg" alt="AI video channel certification" loading="lazy"><span class="sheen"></span></div><figcaption class="cert-cap">AI Video Channel · Meta Content · 2026</figcaption></figure>
+    <div class="certs-stage-wrap reveal">
+      <div class="certs-stage" id="certsStage">
+        <div class="cbag-glow" id="cbagGlow"></div>
+        <img class="cbag" id="cbagImg" src="bag.png" alt="My bag of certifications">
+        <div class="c3" style="--r:-30deg;--d:3.6s;--dl:0s"  data-tx="90"  data-ty="262"><img class="zoomable" src="cert1.jpg" alt="Unilever Best Planner award, Q1 2022"></div>
+        <div class="c3" style="--r:-18deg;--d:4.2s;--dl:.5s" data-tx="150" data-ty="150"><img class="zoomable" src="cert2.jpg" alt="P&amp;G CEO Academy, 2015"></div>
+        <div class="c3" style="--r:-6deg;--d:3.9s;--dl:.2s"  data-tx="252" data-ty="86"><img class="zoomable" src="cert3.jpg" alt="E-commerce Masterclass, 2026"></div>
+        <div class="c3" style="--r:6deg;--d:4.1s;--dl:.7s"   data-tx="390" data-ty="86"><img class="zoomable" src="cert4.jpg" alt="Canva Academy Brand &amp; Content, 2026"></div>
+        <div class="c3" style="--r:18deg;--d:3.7s;--dl:.3s"  data-tx="492" data-ty="150"><img class="zoomable" src="cert5.jpg" alt="Canva Academy Site &amp; Sales Deck"></div>
+        <div class="c3" style="--r:30deg;--d:4.0s;--dl:.6s"  data-tx="552" data-ty="262"><img class="zoomable" src="cert6.jpg" alt="AI Video Channel, Meta Content, 2026"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1105,6 +1118,32 @@
       es.forEach(e => { if (e.isIntersecting) { setTimeout(() => setView('complex'), 1500); dio.disconnect(); } });
     }, { threshold: 0.4 });
     dio.observe(dash);
+  })();
+
+  // ---- certifications: bag opens, certificates arc out and float ----
+  (function () {
+    var stage = document.getElementById('certsStage');
+    if (!stage) return;
+    var wrap = stage.parentElement;
+    var bag = document.getElementById('cbagImg');
+    var glow = document.getElementById('cbagGlow');
+    var certs = [].slice.call(stage.querySelectorAll('.c3'));
+    var bx = 320, by = 300;
+    function fit() { var sc = Math.min(1, wrap.clientWidth / 640); stage.style.transform = 'scale(' + sc + ')'; wrap.style.height = (450 * sc) + 'px'; }
+    fit(); window.addEventListener('resize', fit);
+    certs.forEach(function (c) { c.style.left = (bx - 69) + 'px'; c.style.top = (by - 48) + 'px'; });
+    function settle(c) { c.style.left = (parseFloat(c.dataset.tx) - 69) + 'px'; c.style.top = (parseFloat(c.dataset.ty) - 48) + 'px'; c.classList.add('land'); }
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { bag.style.transform = 'translateX(-50%) scale(1)'; glow.style.opacity = '1'; certs.forEach(function (c) { settle(c); c.classList.add('float'); }); return; }
+    function play() {
+      setTimeout(function () { bag.style.transform = 'translateX(-50%) scale(1)'; glow.style.opacity = '1'; }, 120);
+      [2, 3, 1, 4, 0, 5].forEach(function (idx, step) {
+        var c = certs[idx];
+        setTimeout(function () { settle(c); setTimeout(function () { c.classList.add('float'); }, 950); }, 240 + step * 130);
+      });
+    }
+    var cio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { play(); cio.disconnect(); } }); }, { threshold: 0.35 });
+    cio.observe(stage);
   })();
 
   // ---- count-up on the result stats (Unilever) ----
